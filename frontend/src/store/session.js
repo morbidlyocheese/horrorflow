@@ -17,6 +17,19 @@ function removeUser() {
     };
 };
 
+export const signup = (user) => async (dispatch) => {
+    const { username, email, password } = user;
+    const res = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            username,
+            email,
+            password,
+        }),
+    });
+    dispatch(setUser(res.data.user));
+    return res;
+}
 
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;
