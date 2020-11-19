@@ -44,6 +44,14 @@ export const login = (user) => async (dispatch) => {
     return res;
 }
 
+export const logout = () => async (dispatch) => {
+    const res = await fetch('/api/session', {
+        method: 'DELETE',
+    });
+    dispatch(removeUser());
+    return res;
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
