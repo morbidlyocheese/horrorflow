@@ -17,6 +17,7 @@ function removeUser() {
     };
 };
 
+
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;
     const res = await fetch('/api/session', {
@@ -45,7 +46,13 @@ const sessionReducer = (state = initialState, action) => {
             return newState;
         default:
             return state;
-    }
-};
+        }
+    };
+
+export const restoreUser = () => async dispatch => {
+    const res = await fetch('/api/session');
+    dispatch(setUser(res.data.user));
+    return res;
+}
 
 export default sessionReducer;
