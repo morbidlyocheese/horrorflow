@@ -19,23 +19,25 @@ Application Architecture && Technologies Used:
 ---
 Horrorflow was built using the Express NodeJS framework with a PostgreSQL(postgres) database to store all the application data in combination.
 
-The front ends uses React && Redux in order to render pages. Vanilla Javascript and standard CSS were also used for styling as well.
-
+The front ends uses React && Redux in order to render pages. Vanilla Javascript and standard CSS were also used for styling as well. 
 
 
 Frontend Overview:
 ---
-Placeholder text....
+This application does rely a lot on the backend and the database. The frontend uses vanilla Javascript, some HTML, standard CSS along with React && Redux. The goal is to use as little premade things as possible and doing things myself.
 
 
 
 Backend Overview:
 ---
-Placeholder text....
+This application isn't super heavy on the backend with database management. But it does need the tables within the database to relate properly in order for the features to all work porperly.
 
 Database:
 ---
+The database for Horrorflow really only has a few tables, but each is very important in relating to one another. I tried to design the database as easily as I could and feel what I came up with should work well. 
 
+Here is a diagram of the database implemented for Horrorflow:
+![database diagram](./readme-resources/diagram.png)
 
 
 
