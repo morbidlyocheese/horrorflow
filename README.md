@@ -24,7 +24,53 @@ The front ends uses React && Redux in order to render pages. Vanilla Javascript 
 
 Frontend Overview:
 ---
-This application does rely a lot on the backend and the database. The frontend uses vanilla Javascript, some HTML, standard CSS along with React && Redux. The goal is to use as little premade things as possible and doing things myself.
+This application does rely a lot on the backend and the database. The frontend uses vanilla Javascript, some HTML, standard CSS along with React && Redux. The goal is to use as little premade things as possible and doing things myself. Csurf along with JWT was used for authentication.
+
+Example of Login rendering:
+```javascript
+return (
+        <form onSubmit={handleSubmit}>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+            <label>Email:
+                <input type='text' value={credential} onChange={(e) => setCredential(e.target.value)} required/>
+            </label>
+            <label>Password:
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            </label>
+            <button type='submit'>Login</button>
+        </form>
+);
+```
+![login](/readme-resources/login.png)
+
+Snippet of code from Signup Form:
+```javascript
+function SignupFormPage() {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
+    const [email, setemail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errors, setErrors] = useState([]);
+
+    if (sessionUser ) return <Redirect to='/'/>;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (password === confirmPassword) {
+            setErrors([]);
+            return dispatch(sessionActions.signup({ email, username, password }))
+                .catch(res => {
+                    if (res.data && res.data.errors) setErrors(res.data.errors);
+                });
+        }
+        return setErrors(['Confirm Password field must be the same as the Password field!']);
+    }
+```
+![signup](/readme-resources/signup.png)
 
 
 
