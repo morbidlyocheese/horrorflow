@@ -1,3 +1,50 @@
-li {
+.nav {
     list-style-type: none;
+    background-color: black;
+    height: 40px;
+    /* padding-top: 5px; */
+}
+
+.link {
+    float: right;
+    color: red;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.link:hover {
+    background-color: darkred;
+    color: black;
+}
+
+.nav .link.active {
+    background-color: darkred;
+    color: black;
+}
+
+.fas {
+    color: white;
+    margin: 0;
+}
+
+.profileButton {
+    height: 40px;
+    width: 40px;
+    background-color: black;
+    border: 1px solid red;
+}
+
+.profileButton:hover, .fas:hover {
+    color: red;
+    background-color: white;
+}
+
+.profile-dropdown {
+    color: white;
+    max-width: 100px;
+    background-color: black;
+    align-items: center;
 }
