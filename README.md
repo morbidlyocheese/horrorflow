@@ -19,23 +19,71 @@ Application Architecture && Technologies Used:
 ---
 Horrorflow was built using the Express NodeJS framework with a PostgreSQL(postgres) database to store all the application data in combination.
 
-The front ends uses React && Redux in order to render pages. Vanilla Javascript and standard CSS were also used for styling as well.
-
+The front ends uses React && Redux in order to render pages. Vanilla Javascript and standard CSS were also used for styling as well. 
 
 
 Frontend Overview:
 ---
-Placeholder text....
+This application does rely a lot on the backend and the database. The frontend uses vanilla Javascript, some HTML, standard CSS along with React && Redux. The goal is to use as little premade things as possible and doing things myself. Csurf along with JWT was used for authentication.
+
+Example of Login rendering:
+```javascript
+return (
+        <form onSubmit={handleSubmit}>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+            <label>Email:
+                <input type='text' value={credential} onChange={(e) => setCredential(e.target.value)} required/>
+            </label>
+            <label>Password:
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            </label>
+            <button type='submit'>Login</button>
+        </form>
+);
+```
+![login](/readme-resources/login.png)
+
+Snippet of code from Signup Form:
+```javascript
+function SignupFormPage() {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
+    const [email, setemail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errors, setErrors] = useState([]);
+
+    if (sessionUser ) return <Redirect to='/'/>;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (password === confirmPassword) {
+            setErrors([]);
+            return dispatch(sessionActions.signup({ email, username, password }))
+                .catch(res => {
+                    if (res.data && res.data.errors) setErrors(res.data.errors);
+                });
+        }
+        return setErrors(['Confirm Password field must be the same as the Password field!']);
+    }
+```
+![signup](/readme-resources/signup.png)
 
 
 
 Backend Overview:
 ---
-Placeholder text....
+This application isn't super heavy on the backend with database management. But it does need the tables within the database to relate properly in order for the features to all work porperly.
 
 Database:
 ---
+The database for Horrorflow really only has a few tables, but each is very important in relating to one another. I tried to design the database as easily as I could and feel what I came up with should work well. 
 
+Here is a diagram of the database implemented for Horrorflow:
+![database diagram](./readme-resources/diagram.png)
 
 
 
