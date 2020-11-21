@@ -1,4 +1,15 @@
-form {
-    background-color: black;
-    color: red;
+.signup-container {
+    display: flex;
+    background-color: #212738;
+    color: #A9A9A9;
+}
+
+.login {
+    justify-content: center;
+    align-content: center;
+}
+
+.signup {
+    align-content: center;
+    justify-content: center;
 }

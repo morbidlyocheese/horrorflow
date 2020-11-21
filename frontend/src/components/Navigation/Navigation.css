@@ -1,50 +1,93 @@
 .nav {
     list-style-type: none;
-    background-color: black;
+    background-color: #212738;
     height: 40px;
-    /* padding-top: 5px; */
+    border-radius: 5%;
 }
 
+/* link styles */
 .link {
     float: right;
-    color: red;
+    /* margin-right: 2px; */
+    color: #A9A9A9;
     height: 40px;
+    width: 60px;
     text-align: center;
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
+    border-radius: 5%;
 }
 
-.link:hover {
-    background-color: darkred;
-    color: black;
-}
+/* .link:hover {
+    background-color: #44425A;
+    color: #A9A9A9;
+} */
 
 .nav .link.active {
-    background-color: darkred;
-    color: black;
+    background-color: #697090;
+    color: #A9A9A9;
 }
 
+
+/* profile button styles */
 .fas {
-    color: white;
+    color: #A9A9A9;
     margin: 0;
 }
 
 .profileButton {
     height: 40px;
-    width: 40px;
-    background-color: black;
-    border: 1px solid red;
+    width: 60px;
+    background-color: #697090;
+    border: 1px solid #34394B;
+    border-radius: 5%;
 }
 
 .profileButton:hover, .fas:hover {
-    color: red;
-    background-color: white;
+    background-color: #697090;
+    box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
 }
 
 .profile-dropdown {
-    color: white;
+    color: #A9A9A9;
     max-width: 100px;
-    background-color: black;
+    background-color: #697090;
     align-items: center;
+    /* margin-top: 10px; */
+    border-radius: 5%;
+    margin-left: 15px;
+    padding: 5px;
+    box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    margin-left: 20px;
+    border-radius: 5%;
+    border-bottom: 10px solid #697090;
+    box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
+}
+
+.logout-button {
+    margin-left: auto;
+    text-align: center;
+    border: 0px solid transparent;
+    height: 40px;
+    width: 60px;
+    margin: 5px;
+    padding: 2px;
+    color: #A9A9A9;
+    background-color: #212738;
+    border-radius: 5%;
+}
+
+.logout-button:hover,
+.link:hover {
+    background-color: #34394B;
+    border: 2px solid #212738;
+    border-radius: 5%;
 }
