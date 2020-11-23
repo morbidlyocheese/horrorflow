@@ -19,8 +19,6 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 
-app.use(routes); // connect all routes
-
 // security middleware
 if (!isProduction) {
     // enable cors only in development
@@ -42,6 +40,8 @@ app.use(
         },
     })
 );
+
+app.use(routes); // connect all routes
 
 // catch unhandled requests and forward to error handler
 app.use((_req, _res, next) => {

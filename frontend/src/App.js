@@ -6,6 +6,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  if(!isLoaded) return null;
 
   return (
     <>
@@ -24,6 +27,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <SignupFormPage/>
+          </Route>
+          <Route path='/new-question'>
+            <QuestionsPage/>
           </Route>
         </Switch>
       )}
