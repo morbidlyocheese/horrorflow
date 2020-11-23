@@ -1,4 +1,22 @@
-form {
-    background-color: black;
-    color: red;
+.login-container {
+    margin-top: 100px;
+    display: flex;
+    background-color: #212738;
+    color: #A9A9A9;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-email,
+.login-password,
+.login-button {
+    /* width: 200px;
+    height: 400px; */
+    display: block;
+    padding: 10px;
+}
+
+.login-button {
+    justify-self: center;
 }
