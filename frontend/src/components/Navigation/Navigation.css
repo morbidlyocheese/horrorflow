@@ -6,9 +6,10 @@
 }
 
 /* link styles */
-.link {
+.link-login,
+.link-signup,
+.link-home {
     float: right;
-    /* margin-right: 2px; */
     color: #A9A9A9;
     height: 40px;
     width: 60px;
@@ -24,7 +25,9 @@
     color: #A9A9A9;
 } */
 
-.nav .link.active {
+.nav .link-home.active, 
+.nav .link-login.active, 
+.nav .link-signup.active, {
     background-color: #697090;
     color: #A9A9A9;
 }
@@ -36,7 +39,7 @@
     margin: 0;
 }
 
-.profileButton {
+.profile-button {
     height: 40px;
     width: 60px;
     background-color: #697090;
@@ -44,7 +47,7 @@
     border-radius: 5%;
 }
 
-.profileButton:hover, .fas:hover {
+.profile-button:hover, .fas:hover {
     background-color: #697090;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
 }
@@ -54,7 +57,6 @@
     max-width: 100px;
     background-color: #697090;
     align-items: center;
-    /* margin-top: 10px; */
     border-radius: 5%;
     margin-left: 15px;
     padding: 5px;
