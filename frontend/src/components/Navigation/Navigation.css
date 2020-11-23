@@ -35,9 +35,15 @@
 
 
 /* profile button styles */
-.fas {
+.icon {
+    background: url("./assets/icon.png");
     color: #A9A9A9;
-    margin: 0;
+    height: 40px;
+    width: 50px;
+    background-repeat: no-repeat;
+    margin-left: 3px;
+    padding: 0;
+    overflow: hidden;
 }
 
 .profile-button {
@@ -62,7 +68,7 @@
     background-color: #697090;
     align-items: center;
     border-radius: 5%;
-    margin-left: 30px;
+    margin-left: 5px;
     padding: 10px;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
 }
@@ -72,7 +78,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    margin-left: 40px;
+    margin-left: 18px;
     border-radius: 5%;
     border-bottom: 10px solid #697090;
     box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
@@ -85,7 +91,7 @@
     width: 60px;
     margin-top: 10px;
     padding: 2px;
-    color: #A9A9A9;
+    color: #978e8e;
     background-color: #212738;
     border-radius: 5%;
 }
