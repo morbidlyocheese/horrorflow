@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import './QuestionsPage.css';
 import { newQuestion } from '../../store/question';
+import ListQuestionsPage from './ListQuestionsPage';
 
 function QuestionsPage() {
     const userId = useSelector((state) => state.session.user.id);
