@@ -7,6 +7,7 @@ import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
+import ListQuestionsPage from './components/QuestionsPage/ListQuestionsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path='/new-question'>
             <QuestionsPage/>
+          </Route>
+          <Route path='/questions'>
+            <ListQuestionsPage/>
           </Route>
         </Switch>
       )}

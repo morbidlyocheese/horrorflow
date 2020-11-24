@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { fetch } from './csrf';
 
@@ -44,39 +45,27 @@ export const deleteQuestion = () => async (dispatch) => {
     const res = await fetch('/api/questions', {
         method: 'DELETE',
     });
-    dispatch(removeQuestion());
+    dispatch(displayQuestions(res.data.questions));
     return res;
 }
 
-export const questionList = (data) => async (dispatch) => {
-    const { question, userId, rating } = data;
-    const res = await fetch('/api/questions', {
-        method: 'GET',
-        body: JSON.stringify({
-            question,
-            userId,
-            rating
-        }),
-    });
-    dispatch(displayQuestions(res.data.question));
+export const questionList = () => async (dispatch) => {
+    const res = await fetch('/api/questions');
+    dispatch(displayQuestions(res.data.questions));
     return res;
 }
 
-const questionReducer = (state = { questions: [] }, action) => {
+const questionReducer = (state = [], action) => {
     let newState;
     switch(action.type) {
         case CREATE_QUESTION:
-            newState = Object.assign({}, state);
-            newState.questions = [...newState.questions, action.payload];
-            return newState;
+            return [...state, action.payload];
         case REMOVE_QUESTION:
             newState = Object.assign({}, state);
             newState.question = null;
             return newState;
         case DISPLAY_QUESTIONS:
-            newState = Object.assign({}, state);
-            newState.questions = [...newState.questions, action.payload];
-            return newState;
+            return action.payload;
         default:
             return state;
     }

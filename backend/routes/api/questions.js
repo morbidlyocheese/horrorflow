@@ -21,16 +21,12 @@ router.post(
 );
 
 router.get(
-    '/questions',
+    '/',
     asyncHandler(async (req, res) => {
-        const { question, userId, rating } = req.body;
-
-        const questionList = await Question.findAll({
-            question
-        });
+        const questionList = await Question.findAll();
 
         return res.json({
-            question: displayQuestions,
+            questions: questionList
         });
     }),
 );

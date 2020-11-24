@@ -71,6 +71,7 @@ body {
 }
 
 .profile-dropdown {
+    position: absolute;
     color: #A9A9A9;
     max-width: 200px;
     background-color: #697090;
