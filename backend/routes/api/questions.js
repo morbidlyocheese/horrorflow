@@ -9,8 +9,6 @@ router.post(
     asyncHandler(async (req, res) => {
         const { question, userId } = req.body;
 
-        console.log(question, userId);
-
         const newQuestion = await Question.create({
             question,
             userId
@@ -18,6 +16,21 @@ router.post(
 
         return res.json({
             question: newQuestion,
+        });
+    }),
+);
+
+router.get(
+    '/questions',
+    asyncHandler(async (req, res) => {
+        const { question, userId, rating } = req.body;
+
+        const questionList = await Question.findAll({
+            question
+        });
+
+        return res.json({
+            question: displayQuestions,
         });
     }),
 );

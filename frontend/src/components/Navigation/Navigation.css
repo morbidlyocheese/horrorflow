@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
 .nav {
     list-style-type: none;
     background-color: #212738;
@@ -6,18 +10,25 @@
 }
 
 /* link styles */
-.link-login,
-.link-signup,
-.link-home {
+.nav-link {
     float: right;
     color: #A9A9A9;
     height: 40px;
     width: 60px;
     text-align: center;
-    padding: 12px;
+    padding: 10px;
     text-decoration: none;
     font-size: 12px;
     border-radius: 5%;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.link-new_question {
+    background: url("./assets/question.png");
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 40px;
+    width: 60px;
 }
 
 .nav-link:hover,
@@ -26,9 +37,7 @@
     color: #A9A9A9;
 }
 
-.nav .link-home.active, 
-.nav .link-login.active, 
-.nav .link-signup.active {
+.nav .nav-link.active {
     background-color: #697090;
     color: #A9A9A9;
 }
@@ -36,8 +45,7 @@
 
 /* profile button styles */
 .icon {
-    background: url("./assets/icon.png");
-    color: #A9A9A9;
+    background: url("./assets/profile.png");
     height: 40px;
     width: 50px;
     background-repeat: no-repeat;
@@ -49,17 +57,17 @@
 .profile-button {
     height: 40px;
     width: 60px;
-    background-color: #697090;
+    background-color: #44425A;
     border: 0px solid #34394B;
     border-radius: 5%;
 }
 
 .profile-button:hover,
 .nav-link:hover {
-    background-color: #697090;
+    background-color: #44425A;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
     border: 2px solid #212738;
-    /* border-radius: 5%; */
+    border-radius: 5%;
 }
 
 .profile-dropdown {
@@ -71,6 +79,7 @@
     margin-left: 5px;
     padding: 10px;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
+    font-family: 'Roboto Mono', monospace;
 }
 
 .triangle {
@@ -94,6 +103,7 @@
     color: #978e8e;
     background-color: #212738;
     border-radius: 5%;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .logout-button:hover,
