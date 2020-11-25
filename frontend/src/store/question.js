@@ -7,6 +7,7 @@ const REMOVE_QUESTION = 'question/removeQuestion';
 const UPVOTE_QUESTION = 'question/upvoteQuestion';
 const DOWNVOTE_QUESTION = 'question/downvoteQuestion';
 const DISPLAY_QUESTIONS = 'question/displayQuestions';
+const DISPLAY_QUESTION = 'question/displayQuestion';
 // const EDIT_QUESTION = 'question/editQuestion';
 
 function createQuestion(question) {
@@ -26,6 +27,13 @@ function displayQuestions(questions) {
     return {
         type: DISPLAY_QUESTIONS,
         payload: questions,
+    }
+}
+
+function displayQuestion(singleQuestion) {
+    return {
+        type: DISPLAY_QUESTION,
+        payload: singleQuestion,
     }
 }
 
@@ -55,6 +63,18 @@ export const questionList = () => async (dispatch) => {
     return res;
 }
 
+export const question = (id) => async (dispatch) => {
+    const res = await fetch(`/api/questions/${id}`);
+    dispatch(displayQuestion(res.data.question));
+    return res;
+}
+
+
+
+
+
+
+
 const questionReducer = (state = [], action) => {
     let newState;
     switch(action.type) {
@@ -66,6 +86,8 @@ const questionReducer = (state = [], action) => {
             return newState;
         case DISPLAY_QUESTIONS:
             return action.payload;
+        case DISPLAY_QUESTION:
+            return [action.payload];
         default:
             return state;
     }

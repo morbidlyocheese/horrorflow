@@ -59,7 +59,7 @@ body {
     width: 60px;
     background-color: #44425A;
     border: 0px solid #34394B;
-    border-radius: 5%;
+    border-radius: 10px;
 }
 
 .profile-button:hover,
@@ -67,17 +67,17 @@ body {
     background-color: #44425A;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
     border: 2px solid #212738;
-    border-radius: 5%;
+    border-radius: 10px;
 }
 
 .profile-dropdown {
-    position: absolute;
+    position: relative;
     color: #A9A9A9;
-    max-width: 200px;
+    max-width: 280px;
+    word-wrap: break-word;
     background-color: #697090;
     align-items: center;
-    border-radius: 5%;
-    margin-left: 5px;
+    border-radius: 25px;
     padding: 10px;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
     font-family: 'Roboto Mono', monospace;
@@ -86,9 +86,10 @@ body {
 .triangle {
     width: 0;
     height: 0;
+    position: relative;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    margin-left: 18px;
+    margin-left: 21px;
     border-radius: 5%;
     border-bottom: 10px solid #697090;
     box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
@@ -103,7 +104,7 @@ body {
     padding: 2px;
     color: #978e8e;
     background-color: #212738;
-    border-radius: 5%;
+    border-radius: 10px;
     font-family: 'Roboto Mono', monospace;
 }
 

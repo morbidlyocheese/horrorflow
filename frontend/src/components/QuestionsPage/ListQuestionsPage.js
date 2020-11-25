@@ -5,23 +5,30 @@ import { Redirect } from 'react-router-dom';
 
 import './ListQuestionsPage.css';
 import * as questionActions from '../../store/question';
+import * as sessionActions from '../../store/session';
 
 function ListQuestionsPage({ data }) {
     const dispatch = useDispatch();
 
     const questions = useSelector((state) => state.questions);
-    console.log(questions.questions);
-
+    
     useEffect(() => {
         dispatch(questionActions.questionList())
-    }, [dispatch])
+    }, [dispatch]);
+
+    const handleOnChange = () => {
+
+    }
+    
     return (
         <div className='questions-container'>
             <ul>
                 {questions.map((question) => 
                 <li className='question'>
                         <a className='question-link' href={`/questions/${question.id}`}>{question.question}</a>
-                {question.userId}
+                <p>Posted by: {question.User.username}</p>
+                <p>Rating: {question.rating}</p>
+                <p className='question-created'>Created On: {question.createdAt}</p>
                 </li>)}
                 <li>{data}</li>
             </ul>

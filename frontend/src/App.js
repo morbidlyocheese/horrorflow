@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
@@ -8,8 +8,10 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 import ListQuestionsPage from './components/QuestionsPage/ListQuestionsPage';
+import QuestionPage from './components/QuestionsPage/QuestionPage';
 
 function App() {
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -32,7 +34,10 @@ function App() {
           <Route path='/new-question'>
             <QuestionsPage/>
           </Route>
-          <Route path='/questions'>
+          <Route path='/questions/:id'>
+            {sessionUser ? <QuestionPage /> : <Redirect to='/signup'/>}
+          </Route>
+          <Route path='/'>
             <ListQuestionsPage/>
           </Route>
         </Switch>

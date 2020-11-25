@@ -9,4 +9,6 @@ router.use('/users', userRouters);
 
 router.use('/questions', questionsRouter);
 
+router.use('/questions/:id', questionsRouter);
+
 module.exports = router;

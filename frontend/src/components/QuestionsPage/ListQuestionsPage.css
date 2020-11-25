@@ -24,9 +24,18 @@
 }
 
 .question-link {
+    max-width: 400px;
+    max-height: 400px;
+    overflow: auto;
+    word-wrap: break-word;
+    padding: 20px;
     color: #A9A9A9;
 }
 
 .question-link:hover {
     color: #697090;
+}
+
+.question-created {
+    padding: 10px;
 }
