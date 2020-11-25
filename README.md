@@ -26,52 +26,45 @@ Frontend Overview:
 ---
 This application does rely a lot on the backend and the database. The frontend uses vanilla Javascript, some HTML, standard CSS along with React && Redux. The goal is to use as little premade things as possible and doing things myself. Csurf along with JWT was used for authentication.
 
-Example of Login rendering:
-```javascript
-return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>Email:
-                <input type='text' value={credential} onChange={(e) => setCredential(e.target.value)} required/>
-            </label>
-            <label>Password:
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
-            </label>
-            <button type='submit'>Login</button>
-        </form>
-);
+Example of Login Validation:
+```js
+const validateLogin = [
+    check('credential')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a password.'),
+    handleValidationErrors,
+];
 ```
-![login](/readme-resources/login.png)
+[![Image from Gyazo](https://i.gyazo.com/80d8ad1dec38562aa15c8d5b5f67b798.gif)](https://gyazo.com/80d8ad1dec38562aa15c8d5b5f67b798)
 
-Snippet of code from Signup Form:
-```javascript
-function SignupFormPage() {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
-    const [email, setemail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [errors, setErrors] = useState([]);
-
-    if (sessionUser ) return <Redirect to='/'/>;
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (password === confirmPassword) {
-            setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
-                .catch(res => {
-                    if (res.data && res.data.errors) setErrors(res.data.errors);
-                });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field!']);
-    }
+Snippet of code from Signup Validation:
+```js
+const validateSignup = [
+    check('email')
+        .exists({ checkFalsy: true })
+        .isEmail()
+        .withMessage('Please provide a valid email.'),
+    check('username')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a username with at least 4 characters.'),
+    check('username')
+        .not()
+        .isEmail()
+        .withMessage('Username cannot be an email.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 6 })
+        .withMessage('Password must be 6 characters or more.'),
+    handleValidationErrors,
+];
 ```
-![signup](/readme-resources/signup.png)
 
+[![signup](https://i.gyazo.com/b5663c8570bf4f702728901731983a88.gif)](https://gyazo.com/b5663c8570bf4f702728901731983a88)
 
 
 Backend Overview:
