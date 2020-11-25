@@ -14,6 +14,10 @@ function QuestionPage({ data }) {
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
+    const userId = useSelector((state) => state.session.user.id);
+
+    const response = useSelector((state) => state.responses || { response: '', User: {} });
+
     useEffect(() => {
         dispatch(questionActions.question(questionId))
     }, [dispatch, questionId]);
@@ -33,16 +37,19 @@ function QuestionPage({ data }) {
                 <div className='responses-header'>Responses:</div>
                     {question.Responses.map(response => 
                     <div>
-                        <li className='response'>{response.response}</li>
-                        <div className='response-rating'>
-
-                                {/* <button onClick={() =>}> */}
-                                <div alt='upvote'/>
-                                {/* </button> */}
-                                    <div className='rating-number'>{response.rating}</div>
-                                <button /*onClick={handleDownvote} disabled={handleDownvote}*/>
-                                    <div alt='downvote' className='downvote-button'/>
-                                </button>
+                        <li className='response'>
+                            {response.userId.username}{response.response}
+                        </li>
+                        <div className='rating-container'>
+                            <div className='response-rating'>
+                                    <button>
+                                    <div alt='upvote' className='upvote-button'/>
+                                    </button>
+                                        <div className='rating-number'>{response.rating}</div>
+                                    <button>
+                                        <div alt='downvote' className='downvote-button'/>
+                                    </button>
+                            </div>
                         </div>
                     </div>
                     )}

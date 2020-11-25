@@ -88,7 +88,6 @@ export const question = (id) => async (dispatch) => {
 
 export const newResponse = (data) => async (dispatch) => {
     const { questionId, userId, response } = data;
-    console.log(questionId, userId, response);
     const res = await fetch('/api/responses/', {
         method: 'POST',
         body: JSON.stringify({
