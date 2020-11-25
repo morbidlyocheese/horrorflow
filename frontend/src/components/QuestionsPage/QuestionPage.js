@@ -6,43 +6,17 @@ import { useParams } from 'react-router-dom';
 import './QuestionPage.css';
 import * as questionActions from '../../store/question';
 
+import Response from '../ResponsesPage/Response';
+
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
     const { id } = useParams();
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
-    // const [upvote, updateUpvote] = useState(false);
-    // const [downvote, updateDownvote] = useState(false);
-
-    // const handleUpvote = () => {
-    //     let currentUpvote = Response.rating;
-    //     if (!upvote) {
-    //         currentUpvote = currentUpvote + 1;
-    //         updateUpvote(true);
-    //     } else {
-    //         updateUpvote(false);
-    //     }
-    // }
-    // const handleDownvote = () => {
-    //     let currentDownvote = Response.rating;
-    //     if (!downvote) {
-    //         // return document.addEventListener('click', () => {
-    //         //     currentDownvote = currentDownvote - 1;
-    //         // })
-    //         console.log(currentDownvote, '---------DOWNVOTE--------')
-    //         updateDownvote(true);
-    //     } else {
-    //         updateDownvote(false);
-    //     }
-    // }
-
     useEffect(() => {
         dispatch(questionActions.question(id))
     }, [dispatch]);
-
-    let upvote;
-    // upvote = response.rating
 
     return (
         <>
@@ -62,9 +36,9 @@ function QuestionPage({ data }) {
                         <li className='response'>{response.response}</li>
                         <div className='response-rating'>
 
-                                <button onClick={() => (upvote += 1)}>
+                                {/* <button onClick={() =>}> */}
                                 <div alt='upvote'/>
-                                </button>
+                                {/* </button> */}
                                     <div className='rating-number'>{response.rating}</div>
                                 <button /*onClick={handleDownvote} disabled={handleDownvote}*/>
                                     <div alt='downvote' className='downvote-button'/>
@@ -72,6 +46,7 @@ function QuestionPage({ data }) {
                         </div>
                     </div>
                     )}
+                <li id='new-response-container'><Response/></li>
                 </ul>
             </div>
         </>

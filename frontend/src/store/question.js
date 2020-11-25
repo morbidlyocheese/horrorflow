@@ -4,8 +4,8 @@ import { fetch } from './csrf';
 
 const CREATE_QUESTION = 'question/createQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
-const UPVOTE_QUESTION = 'question/upvoteQuestion';
-const DOWNVOTE_QUESTION = 'question/downvoteQuestion';
+// const UPVOTE_QUESTION = 'question/upvoteQuestion';
+// const DOWNVOTE_QUESTION = 'question/downvoteQuestion';
 const DISPLAY_QUESTIONS = 'question/displayQuestions';
 const DISPLAY_QUESTION = 'question/displayQuestion';
 // const EDIT_QUESTION = 'question/editQuestion';

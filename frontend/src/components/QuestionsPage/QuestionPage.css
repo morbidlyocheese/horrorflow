@@ -76,3 +76,8 @@
     /* border-radius: 10px; */
 
 }
+
+#new-response-container {
+    width: 300px;
+    height: 400px;
+}
