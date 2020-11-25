@@ -33,7 +33,6 @@ if (process.env.NODE_ENV !== 'production') {
         res.status(201).json({});
     });
 }
-
 router.use('/api', apiRouter);
 
 module.exports = router;

@@ -5,11 +5,10 @@ import Redirect from 'react'
 
 import './Response.css';
 import * as questionActions from '../../store/question';
-import * as responseActions from '../../store/response';
 
 function Response({ data }) {
     const dispatch = useDispatch();
-    // const { id } = useParams();
+    const { questionId } = useParams();
 
     // const question = useSelector((state) => state.questions[0]) || { Responses: [] };
 
@@ -25,7 +24,7 @@ function Response({ data }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(responseActions.newResponse({ response: input, userId }));
+        dispatch(questionActions.newResponse({ response: input, questionId, userId }));
         // setRedirect(true);
     }
 

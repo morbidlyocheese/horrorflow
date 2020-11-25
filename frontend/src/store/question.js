@@ -10,6 +10,10 @@ const DISPLAY_QUESTIONS = 'question/displayQuestions';
 const DISPLAY_QUESTION = 'question/displayQuestion';
 // const EDIT_QUESTION = 'question/editQuestion';
 
+const CREATE_RESPONSE = 'response/createResponse';
+const REMOVE_RESPONSE = 'response/removeResponse';
+
+
 function createQuestion(question) {
     return {
         type: CREATE_QUESTION,
@@ -36,6 +40,19 @@ function displayQuestion(singleQuestion) {
         payload: singleQuestion,
     }
 }
+
+function createResponse(response) {
+    return {
+        type: CREATE_RESPONSE,
+        payload: response,
+    };
+};
+
+function removeResponse() {
+    return {
+        type: REMOVE_RESPONSE,
+    };
+};
 
 export const newQuestion = (data) => async (dispatch) => {
     const { question, userId } = data;
@@ -69,7 +86,19 @@ export const question = (id) => async (dispatch) => {
     return res;
 }
 
-
+export const newResponse = (data) => async (dispatch) => {
+    const { questionId, userId, response } = data;
+    console.log(questionId, userId, response);
+    const res = await fetch('/api/responses/', {
+        method: 'POST',
+        body: JSON.stringify({
+            questionId,
+            userId,
+            response
+        }),
+    });
+    dispatch(displayQuestion(res.data.question));
+}
 
 
 
@@ -88,6 +117,10 @@ const questionReducer = (state = [], action) => {
             return action.payload;
         case DISPLAY_QUESTION:
             return [action.payload];
+        case CREATE_RESPONSE:
+            newState = [...state];
+            newState[0].Responses.push(action.payload);
+            return newState;
         default:
             return state;
     }

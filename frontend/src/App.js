@@ -34,7 +34,7 @@ function App() {
           <Route path='/new-question'>
             <QuestionsPage/>
           </Route>
-          <Route path='/questions/:id'>
+          <Route path='/questions/:questionId'>
             {sessionUser ? <QuestionPage /> : <Redirect to='/signup'/>}
           </Route>
           <Route path='/'>

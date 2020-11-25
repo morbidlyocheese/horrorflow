@@ -10,13 +10,13 @@ import Response from '../ResponsesPage/Response';
 
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
-    const { id } = useParams();
+    const { questionId } = useParams();
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
     useEffect(() => {
-        dispatch(questionActions.question(id))
-    }, [dispatch]);
+        dispatch(questionActions.question(questionId))
+    }, [dispatch, questionId]);
 
     return (
         <>

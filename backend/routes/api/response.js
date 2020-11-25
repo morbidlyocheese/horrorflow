@@ -7,16 +7,20 @@ const { Question, User, Response } = require('../../db/models');
 router.post(
     '/',
     asyncHandler(async (req, res) => {
-        const { question, userId, response } = req.body;
+        const { questionId, userId, response } = req.body;
 
         const newResponse = await Response.create({
-            question,
+            questionId,
             userId,
             response
         });
 
+        const question = await Question.findByPk(questionId, {
+            include: [User, Response]
+        });
+
         return res.json({
-            response: newResponse,
+            question
         });
     }),
 );
