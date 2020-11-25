@@ -13,7 +13,6 @@ const DISPLAY_QUESTION = 'question/displayQuestion';
 const CREATE_RESPONSE = 'response/createResponse';
 const REMOVE_RESPONSE = 'response/removeResponse';
 
-
 function createQuestion(question) {
     return {
         type: CREATE_QUESTION,
@@ -97,8 +96,18 @@ export const newResponse = (data) => async (dispatch) => {
         }),
     });
     dispatch(displayQuestion(res.data.question));
+    console.log(res.data.question, '------')
 }
 
+
+export const changeVote = (responseId, rating, questionId) => async (dispatch) => {
+    const body = { questionId, responseId, rating };
+    const res = await fetch('/api/vote', {
+        method: 'PUT',
+        body: JSON.stringify(body),
+    });
+    dispatch(displayQuestion(res.data.question));
+}
 
 
 

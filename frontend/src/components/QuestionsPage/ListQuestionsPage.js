@@ -27,7 +27,6 @@ function ListQuestionsPage({ data }) {
                 <li className='question'>
                         <a className='question-link' href={`/questions/${question.id}`}>{question.question}</a>
                 <p>Posted by: {question.User.username}</p>
-                <p>Rating: {question.rating}</p>
                 <p className='question-created'>Created On: {question.createdAt}</p>
                 </li>)}
                 <li>{data}</li>

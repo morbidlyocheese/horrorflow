@@ -18,6 +18,10 @@ function QuestionPage({ data }) {
 
     const response = useSelector((state) => state.responses || { response: '', User: {} });
 
+    const handleVote = (responseId, rating, questionId) =>{
+        dispatch(questionActions.changeVote(responseId, rating, questionId))
+    }
+
     useEffect(() => {
         dispatch(questionActions.question(questionId))
     }, [dispatch, questionId]);
@@ -38,15 +42,17 @@ function QuestionPage({ data }) {
                     {question.Responses.map(response => 
                     <div>
                         <li className='response'>
-                            {response.userId.username}{response.response}
+                            <i>{response.User.username}</i>
                         </li>
+                        <li className='response-responded'>Responded With:</li>
+                        <li className='response-text'>{response.response}</li>
                         <div className='rating-container'>
                             <div className='response-rating'>
-                                    <button>
+                                    <button className='vote-button' onClick={() => {handleVote(response.id, response.rating + 1, response.questionId)}}>
                                     <div alt='upvote' className='upvote-button'/>
                                     </button>
                                         <div className='rating-number'>{response.rating}</div>
-                                    <button>
+                                    <button className='vote-button' onClick={() => { handleVote(response.id, response.rating - 1, response.questionId) }}>
                                         <div alt='downvote' className='downvote-button'/>
                                     </button>
                             </div>

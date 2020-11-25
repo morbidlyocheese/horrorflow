@@ -16,7 +16,7 @@ router.post(
         });
 
         const question = await Question.findByPk(questionId, {
-            include: [User, Response]
+            include: [{ model: User }, { model: Response, include: [User] }]
         });
 
         return res.json({

@@ -4,23 +4,35 @@ const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const { Question, User, Response } = require('../../db/models');
 
-router.post(
+router.put(
     '/',
     asyncHandler(async (req, res) => {
-        const { questionId, userId, response } = req.body;
+        const { questionId, responseId, rating } = req.body;
 
-        const newVote = await Response.create({
-            questionId,
-            userId,
-            response
-        });
+        await Response.update(
+            { rating },
+            { where: {
+                id: responseId
+                } 
+            }
+        );
 
         const question = await Question.findByPk(questionId, {
-            include: [User, Response]
+            include: [{ 
+                model: User 
+            }, 
+            {
+                model: Response,
+                order: [
+                    rating, 'ASC'
+                ],
+                include: [User],
+                
+            }]
         });
 
-        return res.json({
-            question
+        res.json({
+            question  
         });
     }),
 );
