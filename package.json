@@ -1,6 +1,9 @@
 {
   "name": "horrorflow",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "[Horrorflow]() - Asking the important questions about Horror films. --- *by [Adam Jacobson](https://github.com/djangothesolarboy)*",
   "main": "index.js",
   "scripts": {
