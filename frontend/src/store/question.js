@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { fetch } from './csrf';
 
@@ -5,6 +6,8 @@ const CREATE_QUESTION = 'question/createQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
 const UPVOTE_QUESTION = 'question/upvoteQuestion';
 const DOWNVOTE_QUESTION = 'question/downvoteQuestion';
+const DISPLAY_QUESTIONS = 'question/displayQuestions';
+const DISPLAY_QUESTION = 'question/displayQuestion';
 // const EDIT_QUESTION = 'question/editQuestion';
 
 function createQuestion(question) {
@@ -20,6 +23,20 @@ function removeQuestion() {
     };
 };
 
+function displayQuestions(questions) {
+    return {
+        type: DISPLAY_QUESTIONS,
+        payload: questions,
+    }
+}
+
+function displayQuestion(singleQuestion) {
+    return {
+        type: DISPLAY_QUESTION,
+        payload: singleQuestion,
+    }
+}
+
 export const newQuestion = (data) => async (dispatch) => {
     const { question, userId } = data;
     const res = await fetch('/api/questions', {
@@ -29,17 +46,48 @@ export const newQuestion = (data) => async (dispatch) => {
             userId
         }),
     });
-    console.log(res.data.question, '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     dispatch(createQuestion(res.data.question));
 }
 
-const questionReducer = (state = { questions: [] }, action) => {
+export const deleteQuestion = () => async (dispatch) => {
+    const res = await fetch('/api/questions', {
+        method: 'DELETE',
+    });
+    dispatch(displayQuestions(res.data.questions));
+    return res;
+}
+
+export const questionList = () => async (dispatch) => {
+    const res = await fetch('/api/questions');
+    dispatch(displayQuestions(res.data.questions));
+    return res;
+}
+
+export const question = (id) => async (dispatch) => {
+    const res = await fetch(`/api/questions/${id}`);
+    dispatch(displayQuestion(res.data.question));
+    return res;
+}
+
+
+
+
+
+
+
+const questionReducer = (state = [], action) => {
     let newState;
     switch(action.type) {
         case CREATE_QUESTION:
+            return [...state, action.payload];
+        case REMOVE_QUESTION:
             newState = Object.assign({}, state);
-            newState.questions = [...newState.questions, action.payload];
+            newState.question = null;
             return newState;
+        case DISPLAY_QUESTIONS:
+            return action.payload;
+        case DISPLAY_QUESTION:
+            return [action.payload];
         default:
             return state;
     }
