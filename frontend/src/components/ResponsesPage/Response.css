@@ -1,0 +1,36 @@
+.new-response-container {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+/* text box */
+.response-box {
+    width: 300px;
+    height: 100px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* question button */
+.response-button {
+    justify-self: center;
+    margin-left: auto;
+    text-align: center;
+    border: 0px solid transparent;
+    height: 40px;
+    width: 60px;
+    margin: 5px;
+    padding: 2px;
+    color: #A9A9A9;
+    background-color: #697090;
+    border-radius: 5%;
+}
+
+.response-button:hover {
+    background-color: #34394B;
+    border: 2px solid #212738;
+    border-radius: 5%;
+}
