@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import './QuestionPage.css';
 import * as questionActions from '../../store/question';
-
 import Response from '../ResponsesPage/Response';
+
+import './QuestionPage.css';
+import '../ResponsesPage/Response.css';
 
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function QuestionPage({ data }) {
             <div className='question-container'>
                 <ul>
                     <li className='question'>
-                        <i>{question.User.username} <b>Says:</b></i>
+                        <i>{question.User.username}: </i>
                         {question.question}
                     </li>
                 </ul>
@@ -42,9 +43,9 @@ function QuestionPage({ data }) {
                     {question.Responses.map(response => 
                     <div>
                         <li className='response'>
-                            <i>{response.User.username}</i>
+                            <i>{response.User.username}:</i>
                         </li>
-                        <li className='response-responded'>Responded With:</li>
+                        {/* <li className='response-responded'>Responded With:</li> */}
                         <li className='response-text'>{response.response}</li>
                         <div className='rating-container'>
                             <div className='response-rating'>
@@ -59,7 +60,9 @@ function QuestionPage({ data }) {
                         </div>
                     </div>
                     )}
-                <li id='new-response-container'><Response/></li>
+                <li id='new-response-container'>
+                    <Response/>
+                </li>
                 </ul>
             </div>
         </>

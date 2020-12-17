@@ -23,7 +23,7 @@ function Response({ data }) {
     }
 
     return (
-        <div className='new-response-container'>
+        <div className='new-response-form'>
             <form onSubmit={handleSubmit}>
                 <textarea name='response' value={input} onChange={handleChange} className='response-box' />
                 <button type='submit' className='response-button'>Submit</button>

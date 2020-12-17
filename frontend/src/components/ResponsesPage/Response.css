@@ -1,8 +1,16 @@
-.new-response-container {
-    width: 300px;
-    height: 300px;
+#new-response-container {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
-    border-radius: 25px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.new-response-form {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 /* text box */
@@ -26,11 +34,116 @@
     padding: 2px;
     color: #A9A9A9;
     background-color: #697090;
-    border-radius: 5%;
+    border-radius: 5px;
 }
 
 .response-button:hover {
     background-color: #34394B;
     border: 2px solid #212738;
     border-radius: 5%;
+}
+
+.responses-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.responses-header {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25px;
+    color: #A9A9A9;
+}
+
+.response {
+    /* display: flex; */
+    background-color: #212738;
+    max-width: 500px;
+    max-height: 500px;
+    color: #A9A9A9;
+    padding: 20px 20px 10px 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.response-responded {
+    /* display: flex; */
+    background-color: #212738;
+    max-width: 500px;
+    max-height: 500px;
+    color: #A9A9A9;
+    padding: 0px 20px 30px 20px;
+    box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.response-text {
+    /* display: flex; */
+    background-color: #212738;
+    max-width: 500px;
+    max-height: 500px;
+    color: #A9A9A9;
+    padding: 0px 20px 30px 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
+    font-family: 'Roboto Mono', monospace;
+    align-items: center;
+}
+
+/* rating styles  */
+.rating-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.response-rating {
+    display: flex;
+    justify-content: center;
+    background-color: #212738;
+    color: #A9A9A9;
+    margin-right: 40px;
+    width: 100px;
+    height: 90px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.rating-number {
+    margin-top: 25px;
+    padding: 5px;
+}
+
+.upvote-button {
+    background-image: url('./assets/up.png');
+    width: 9px;
+    height: 90px;
+    margin-top: 10px;
+    background-repeat: no-repeat;
+}
+
+.downvote-button {
+    background-image: url('./assets/down.png');
+    width: 9px;
+    height: 90px;
+    margin-top: 10px;
+    background-repeat: no-repeat;
+}
+
+.vote-button {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+}
+
+.vote-button:hover {
+    background-color: #A9A9A9;
 }

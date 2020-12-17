@@ -6,7 +6,7 @@ body {
     list-style-type: none;
     background-color: #212738;
     height: 40px;
-    border-radius: 5%;
+    border-radius: 5px;
 }
 
 /* link styles */
@@ -19,7 +19,7 @@ body {
     padding: 10px;
     text-decoration: none;
     font-size: 12px;
-    border-radius: 5%;
+    border-radius: 5px;
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -59,7 +59,7 @@ body {
     width: 60px;
     background-color: #44425A;
     border: 0px solid #34394B;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .profile-button:hover,
@@ -77,7 +77,7 @@ body {
     word-wrap: break-word;
     background-color: #697090;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 5px;
     padding: 10px;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
     font-family: 'Roboto Mono', monospace;
@@ -104,7 +104,7 @@ body {
     padding: 2px;
     color: #978e8e;
     background-color: #212738;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: 'Roboto Mono', monospace;
 }
 
