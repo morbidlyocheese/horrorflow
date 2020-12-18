@@ -16,6 +16,7 @@ function ListQuestionsPage({ data }) {
         questions.map((question) => {
             const created = question.createdAt;
             date = created.split('T');
+            return date[0];
         });
         return date[0];
     };
