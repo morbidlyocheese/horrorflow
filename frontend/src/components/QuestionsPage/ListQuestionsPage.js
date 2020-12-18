@@ -16,9 +16,7 @@ function ListQuestionsPage({ data }) {
         dispatch(questionActions.questionList())
     }, [dispatch]);
 
-    const handleOnChange = () => {
-
-    }
+    
     
     return (
         <div className='questions-container'>

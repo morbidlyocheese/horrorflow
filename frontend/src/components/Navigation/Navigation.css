@@ -92,7 +92,7 @@ body {
     margin-left: 21px;
     border-radius: 5%;
     border-bottom: 10px solid #697090;
-    box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
+    /* box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19); */
 }
 
 .logout-button {
