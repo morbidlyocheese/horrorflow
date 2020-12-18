@@ -24,19 +24,7 @@ The front ends uses React && Redux in order to render pages. Vanilla Javascript 
 
 Installation:
 ---
-1. Click on the *green* ```↓Code``` button to access a dropdown menu to clone the repo.
-2. Copy the repo link provided, or click on the clipboard button to copy the repo link to your clipboard. (I have also provided a link to the repo below)
- - ```https://github.com/djangothesolarboy/horrorflow.git```
-3. Head over to your terminal and ```cd``` into a directory you would like to keep the app in, I would suggest Documents, Desktop or Downloads. But it is all on preference, just remember where you put it.
-4. Once you have a location you want to place the app, in your terminal type ```git clone https://github.com/djangothesolarboy/horrorflow.git```. Your terminal will begin cloning the repo to your local machine.
-5. Upon completetion of the cloning ```cd``` into the app's main directory by using the command ```cd horrorflow```.
-6. Once you are inside of the **Horrorflow** directory you will see a few folders; backend and frontend being the most important here. Create 2 new tabs or windows of your terminal.
- A. In one terminal you will want to ```cd``` into the frontend folder -> ```cd frontend```.
- B. In another terminal you will want to ```cd``` into the backend folder -> ```cd backend```.
- C. In your last terminal, before you do anything else, you will need to open the root directory of the app in your favorite text editor, like VSCode. -> ```code .``` <- This command will open the entire directory in your text editor you have as your default.
-  - Once you have your editor open, in your terminal you will want to ```cd backend```. (You could also do it in the same tab as the other one that you've already used that command with)
-  - Once inside of the backend folder you will want to ```touch .env```. This will create a ```.env``` file.
-  - Inside of your editor look for a file named ```.envexample```. Copy the contents of that file into the ```.env``` file you just created.
+For a full walkthrough on how to clone the app and install everything needed to run it on your own local machine please go to the wiki via this link [here](https://github.com/djangothesolarboy/horrorflow/wiki/Installation-Instructions). If you have any issues, please feel free tor reach out!
 
 
 Frontend Overview:
