@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 import ListQuestionsPage from './components/QuestionsPage/ListQuestionsPage';
 import QuestionPage from './components/QuestionsPage/QuestionPage';
+import SplashPage from './components/SplashPage/SplashPage';
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -35,10 +36,13 @@ function App() {
             <QuestionsPage/>
           </Route>
           <Route path='/questions/:questionId'>
-            {sessionUser ? <QuestionPage /> : <Redirect to='/signup'/>}
+            {sessionUser ? <QuestionPage/> : <Redirect to='/signup'/>}
+          </Route>
+          <Route path='/questions'>
+            <ListQuestionsPage/>
           </Route>
           <Route path='/'>
-            <ListQuestionsPage/>
+            <SplashPage/>
           </Route>
         </Switch>
       )}

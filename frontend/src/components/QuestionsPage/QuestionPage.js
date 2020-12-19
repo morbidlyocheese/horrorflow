@@ -45,7 +45,6 @@ function QuestionPage({ data }) {
                         <li className='response'>
                             <i>{response.User.username}:</i>
                         </li>
-                        {/* <li className='response-responded'>Responded With:</li> */}
                         <li className='response-text'>{response.response}</li>
                         <div className='rating-container'>
                             <div className='response-rating'>
