@@ -13,6 +13,7 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
+                <NavLink className='nav nav-link link-home' to='/questions'>Home</NavLink>
                 <NavLink className='nav nav-link link-new_question' to='/new-question'></NavLink>
                 <ProfileButton className='nav profile-button' user={sessionUser}/>
             </>
@@ -20,6 +21,7 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
+                <NavLink className='nav nav-link link-home' to='/'>Home</NavLink>
                 <NavLink className='nav nav-link link-login' to='/login'>Login</NavLink>
                 <NavLink className='nav nav-link link-signup' to='/signup'>Signup</NavLink>
             </>
@@ -29,9 +31,9 @@ function Navigation({ isLoaded }) {
     return (
         <div className='nav'>
             <ul>
-                <li>
-                    <NavLink className='nav nav-link link-home' exact to='/'>Home</NavLink>
-                </li>
+                {/* <li>
+                    <NavLink className='nav nav-link link-home' to='/questions'>Home</NavLink>
+                </li> */}
                 <li>{isLoaded && sessionLinks}</li>
             </ul>
         </div>

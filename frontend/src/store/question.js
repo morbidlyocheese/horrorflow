@@ -4,11 +4,8 @@ import { fetch } from './csrf';
 
 const CREATE_QUESTION = 'question/createQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
-// const UPVOTE_QUESTION = 'question/upvoteQuestion';
-// const DOWNVOTE_QUESTION = 'question/downvoteQuestion';
 const DISPLAY_QUESTIONS = 'question/displayQuestions';
 const DISPLAY_QUESTION = 'question/displayQuestion';
-// const EDIT_QUESTION = 'question/editQuestion';
 
 const CREATE_RESPONSE = 'response/createResponse';
 const REMOVE_RESPONSE = 'response/removeResponse';
@@ -96,9 +93,7 @@ export const newResponse = (data) => async (dispatch) => {
         }),
     });
     dispatch(displayQuestion(res.data.question));
-    console.log(res.data.question, '------')
 }
-
 
 export const changeVote = (responseId, rating, questionId) => async (dispatch) => {
     const body = { questionId, responseId, rating };

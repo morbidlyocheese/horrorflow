@@ -3,10 +3,8 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-
 import './QuestionsPage.css';
 import { newQuestion } from '../../store/question';
-import ListQuestionsPage from './ListQuestionsPage';
 
 function QuestionsPage() {
     const userId = useSelector((state) => state.session.user.id);
