@@ -6,6 +6,7 @@ Table Of Contents:
 ---
 - [Description](https://github.com/djangothesolarboy/horrorflow#Description)
 - [Application Architecture && Technologies Used](https://github.com/djangothesolarboy/horrorflow#Application-Architecture-&&-Technologies-Used)
+- [Installation](https://github.com/djangothesolarboy/horrorflow#Installation)
 - [Technology Shields](https://github.com/djangothesolarboy/horrorflow#Technology-Shields)
 - [Frontend Overview](https://github.com/djangothesolarboy/horrorflow#Frontend-Overview)
 - [Backend Overview](https://github.com/djangothesolarboy/horrorflow#Backend-Overview)
@@ -20,6 +21,10 @@ Application Architecture && Technologies Used:
 Horrorflow was built using the Express NodeJS framework with a PostgreSQL(postgres) database to store all the application data in combination.
 
 The front ends uses React && Redux in order to render pages. Vanilla Javascript and standard CSS were also used for styling as well. 
+
+Installation:
+---
+For a full walkthrough on how to clone the app and install everything needed to run it on your own local machine please go to the wiki via this link [here](https://github.com/djangothesolarboy/horrorflow/wiki/Installation-Instructions). If you have any issues, please feel free tor reach out!
 
 
 Frontend Overview:

@@ -9,7 +9,7 @@ function ListQuestionsPage({ data }) {
     const dispatch = useDispatch();
 
     const questions = useSelector((state) => state.questions);
-    function questionDate() {
+    function questionDate() { 
         let date;
         questions.map((question) => {
             const created = question.createdAt;
