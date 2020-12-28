@@ -44,7 +44,7 @@ const validateLogin = [
     handleValidationErrors,
 ];
 ```
-[![Image from Gyazo](https://i.gyazo.com/80d8ad1dec38562aa15c8d5b5f67b798.gif)](https://gyazo.com/80d8ad1dec38562aa15c8d5b5f67b798)
+![login](./readme-resources/login.gif)
 
 Snippet of code from Signup Validation:
 ```js
@@ -69,7 +69,7 @@ const validateSignup = [
 ];
 ```
 
-[![signup](https://i.gyazo.com/b5663c8570bf4f702728901731983a88.gif)](https://gyazo.com/b5663c8570bf4f702728901731983a88)
+![signup](./readme-resources/signup.gif)
 
 
 Backend Overview:
