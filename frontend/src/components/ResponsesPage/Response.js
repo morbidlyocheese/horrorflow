@@ -16,6 +16,7 @@ function Response({ data }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(questionActions.newResponse({ response: input, questionId, userId }));
+        setInput('');
     }
 
     const handleChange = (e) => {

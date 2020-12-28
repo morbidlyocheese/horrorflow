@@ -38,7 +38,12 @@ router.get(
     asyncHandler(async (req, res) => {
         const questionId = parseInt(req.params.id);
         const question = await Question.findByPk(questionId, {
-            include: [{ model: User }, { model: Response, include: [User] }]
+            include: [
+                { model: User }, 
+                { model: Response, 
+                    order: [['rating', 'ASC']], 
+                    include: [User] 
+                }]
         });
 
         return res.json({

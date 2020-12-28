@@ -40,7 +40,8 @@ function QuestionPage({ data }) {
             <div className='responses-container'>
                 <ul className='responses'>
                 <div className='responses-header'>Responses:</div>
-                    {question.Responses.map(response => 
+                {console.log(question.Responses, '-----')}
+                    {question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
                     <div>
                         <li className='response'>
                             <i>{response.User.username}:</i>
