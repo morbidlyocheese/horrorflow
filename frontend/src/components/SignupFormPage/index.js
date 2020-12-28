@@ -30,8 +30,8 @@ function SignupFormPage() {
 
     return (
         <div className='signup-container'>
-            <form onSubmit={handleSubmit}>
-                <ul>
+            <form className='signup form-container' onSubmit={handleSubmit}>
+                <ul className='signup signup-errors-container'>
                     {errors.map((error, idx) => <li className='signup signup-errors' key={idx}>{error}</li>)}
                 </ul>
                 <label className='signup signup-email'>
