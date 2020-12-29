@@ -17,9 +17,10 @@ function createQuestion(question) {
     };
 };
 
-function removeQuestion() {
+function removeQuestion(question) {
     return {
         type: REMOVE_QUESTION,
+        payload: question
     };
 };
 
@@ -44,9 +45,10 @@ function createResponse(response) {
     };
 };
 
-function removeResponse() {
+function removeResponse(response) {
     return {
         type: REMOVE_RESPONSE,
+        payload: response
     };
 };
 
@@ -62,11 +64,15 @@ export const newQuestion = (data) => async (dispatch) => {
     dispatch(createQuestion(res.data.question));
 }
 
-export const deleteQuestion = () => async (dispatch) => {
-    const res = await fetch('/api/questions', {
+export const deleteQuestion = (questionId, userId) => async (dispatch) => {
+    const res = await fetch(`/api/questions/`, {
         method: 'DELETE',
+        body: JSON.stringify({
+            questionId,
+            userId        
+        })
     });
-    dispatch(displayQuestions(res.data.questions));
+    dispatch(removeQuestion(res));
     return res;
 }
 
@@ -112,10 +118,6 @@ const questionReducer = (state = [], action) => {
     switch(action.type) {
         case CREATE_QUESTION:
             return [...state, action.payload];
-        case REMOVE_QUESTION:
-            newState = Object.assign({}, state);
-            newState.question = null;
-            return newState;
         case DISPLAY_QUESTIONS:
             return action.payload;
         case DISPLAY_QUESTION:
@@ -123,6 +125,10 @@ const questionReducer = (state = [], action) => {
         case CREATE_RESPONSE:
             newState = [...state];
             newState[0].Responses.push(action.payload);
+            return newState;
+        case REMOVE_QUESTION:
+            newState = Object.assign({}, state);
+            newState.question = null;
             return newState;
         default:
             return state;

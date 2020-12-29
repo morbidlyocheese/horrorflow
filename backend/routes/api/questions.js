@@ -63,21 +63,24 @@ router.post(
 )
 
 router.delete(
-    '/:id(\\d+)',
+    '/',
     asyncHandler(async (req, res) => {
-        const userId = res.locals.user.dataValues.id;
-        const questionId = parseInt(req.params.id, 10);
+        console.log(req.body.questionId, '--------')
 
+        // const userId = res.locals.user.dataValues.id;
 
-        if (Question.userId === userId) {
-            QuestionsPage.remove({
-                id: req.params.id
-            }), function (err, user) {
-                if (err) {
-                    return res.send(err);
-                }
-                res.json({ message: 'Deleted' })
-            }
+        const question = await Question.findByPk(req.body.questionId, {
+            include: [{ model: Response, include: [User] }]
+        });
+
+        console.log(question.userId, '~~~~~~~~~')
+
+        if (question.userId !== req.body.userId) {
+            
+            return res.status(500).json({ code: 500, message: 'There was an error deleting the question.' });
+        } else {
+            question.destroy();
+            res.status(200).json({ code: 200, message: 'Question deleted successfully.' });
         }
    })
 );

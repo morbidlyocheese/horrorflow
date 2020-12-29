@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import * as questionActions from '../../store/question';
 import Response from '../ResponsesPage/Response';
@@ -27,6 +28,19 @@ function QuestionPage({ data }) {
         dispatch(questionActions.question(questionId))
     }, [dispatch, questionId]);
 
+    const [redirect, setRedirect] = useState(false);
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        setRedirect(true);
+        console.log(questionId, userId);
+        dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
+    }
+    
+    if (redirect) {
+        return <Redirect to='/questions/' />
+    }
+
     return (
         <>
             <div className='question-container'>
@@ -34,6 +48,7 @@ function QuestionPage({ data }) {
                     <li className='question'>
                         <i>{question.User.username}: </i>
                         <li>{question.question}</li>
+                        <button onClick={handleDelete}>Delete</button>
                     </li>
                 </ul>
             </div>
