@@ -23,6 +23,7 @@ function ListQuestionsPage({ data }) {
         dispatch(questionActions.questionList())
     }, [dispatch]);
     
+    
     return (
         <div className='questions-container'>
             <ul>

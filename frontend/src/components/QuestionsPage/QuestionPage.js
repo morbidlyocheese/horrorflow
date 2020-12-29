@@ -33,14 +33,13 @@ function QuestionPage({ data }) {
                 <ul>
                     <li className='question'>
                         <i>{question.User.username}: </i>
-                        {question.question}
+                        <li>{question.question}</li>
                     </li>
                 </ul>
             </div>
             <div className='responses-container'>
                 <ul className='responses'>
                 <div className='responses-header'>Responses:</div>
-                {console.log(question.Responses, '-----')}
                     {question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
                     <div>
                         <li className='response'>

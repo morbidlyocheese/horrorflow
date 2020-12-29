@@ -38,12 +38,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const questionId = parseInt(req.params.id);
         const question = await Question.findByPk(questionId, {
-            include: [
-                { model: User }, 
-                { model: Response, 
-                    order: [['rating', 'ASC']], 
-                    include: [User] 
-                }]
+            include: [{ model: User }, { model: Response, include: [User] }]
         });
 
         return res.json({
@@ -67,5 +62,24 @@ router.post(
     })
 )
 
+router.delete(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const userId = res.locals.user.dataValues.id;
+        const questionId = parseInt(req.params.id, 10);
+
+
+        if (Question.userId === userId) {
+            QuestionsPage.remove({
+                id: req.params.id
+            }), function (err, user) {
+                if (err) {
+                    return res.send(err);
+                }
+                res.json({ message: 'Deleted' })
+            }
+        }
+   })
+);
 
 module.exports = router;
