@@ -25,4 +25,27 @@ router.post(
     }),
 );
 
+router.delete(
+    '/',
+    asyncHandler(async (req, res) => {
+        console.log(responseId, '--------')
+
+        // const userId = res.locals.user.dataValues.id;
+
+        const response = await Response.findByPk(responseId, {
+            include: [{ model: Response, include: [User] }]
+        });
+
+        console.log(response.userId, '~~~~~~~~~')
+
+        if (response.userId !== req.body.userId) {
+            window.alert('You are deleting your response!');
+            return res.status(500).json({ code: 500, message: 'There was an error deleting the response.' });
+        } else {
+            response.destroy();
+            res.status(200).json({ code: 200, message: 'Response deleted successfully.' });
+        }
+    })
+);
+
 module.exports = router;

@@ -13,6 +13,7 @@ import '../ResponsesPage/Response.css';
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
     const { questionId } = useParams();
+    const { responseId } = useParams();
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
@@ -30,7 +31,7 @@ function QuestionPage({ data }) {
 
     const [redirect, setRedirect] = useState(false);
 
-    const handleDelete = (e) => {
+    const handleQuestionDelete = (e) => {
         e.preventDefault();
         setRedirect(true);
         console.log(questionId, userId);
@@ -41,6 +42,13 @@ function QuestionPage({ data }) {
         return <Redirect to='/questions/' />
     }
 
+    const handleResponseDelete = (e) => {
+        // e.preventDefault();
+        setRedirect(true);
+        console.log(responseId, userId, '-----delete-----');
+        dispatch(questionActions.deleteResponse(userId, responseId));
+    }
+
     return (
         <>
             <div className='question-container'>
@@ -48,7 +56,7 @@ function QuestionPage({ data }) {
                     <li className='question'>
                         <i>{question.User.username}: </i>
                         <li>{question.question}</li>
-                        <button onClick={handleDelete}>Delete</button>
+                        <button onClick={handleQuestionDelete}>Delete</button>
                     </li>
                 </ul>
             </div>
@@ -61,6 +69,7 @@ function QuestionPage({ data }) {
                             <i>{response.User.username}:</i>
                         </li>
                         <li className='response-text'>{response.response}</li>
+                        <button onClick={handleResponseDelete}>Delete</button>
                         <div className='rating-container'>
                             <div className='response-rating'>
                                     <button className='vote-button' onClick={() => {handleVote(response.id, response.rating + 1, response.questionId)}}>

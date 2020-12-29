@@ -101,6 +101,18 @@ export const newResponse = (data) => async (dispatch) => {
     dispatch(displayQuestion(res.data.question));
 }
 
+export const deleteResponse = (responseId, userId) => async (dispatch) => {
+    const res = await fetch(`/api/responses/`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            responseId,
+            userId
+        })
+    });
+    dispatch(removeResponse(res));
+    return res;
+}
+
 export const changeVote = (responseId, rating, questionId) => async (dispatch) => {
     const body = { questionId, responseId, rating };
     const res = await fetch('/api/vote', {
@@ -129,6 +141,10 @@ const questionReducer = (state = [], action) => {
         case REMOVE_QUESTION:
             newState = Object.assign({}, state);
             newState.question = null;
+            return newState;
+        case REMOVE_RESPONSE:
+            newState = Object.assign({}, state);
+            newState.response = null;
             return newState;
         default:
             return state;
