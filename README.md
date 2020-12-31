@@ -1,4 +1,4 @@
-[Horrorflow]() - Asking the important questions about Horror films.
+[Horrorflow](https://horrorflow.herokuapp.com/) - Asking the important questions about Horror films.
 ---
 *by [Damien Darko](https://github.com/djangothesolarboy)*
 
