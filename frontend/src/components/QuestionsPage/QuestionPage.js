@@ -35,12 +35,12 @@ function QuestionPage({ data }) {
 
     const handleQuestionDelete = (e) => {
         e.preventDefault();
-        setRedirect(true);
-
+        
         if (question.userId === sessionUser.id) {
             dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
+            setRedirect(true);
         } else {
-            console.log('Error deleting question.');
+            alert("You cannot delete things that aren't yours!");
         }
     }
     
@@ -51,55 +51,95 @@ function QuestionPage({ data }) {
     const handleResponseDelete = (e) => {
         e.preventDefault();
         const responseId = e.target.id;
-
-        if (question.userId !== sessionUser.id) {
-            alert('Error deleting response.');
-        } else {
-            dispatch(questionActions.deleteResponse(responseId, userId, questionId));
-        }
+        
+        dispatch(questionActions.deleteResponse(responseId, userId, questionId))
     }
 
-    return (
-        <>
-            <div className='question-container'>
-                <ul>
-                    <li className='question'>
-                        <i>{question.User.username}: </i>
-                        <li>{question.question}</li>
-                        <button onClick={handleQuestionDelete}>Delete</button>
-                    </li>
-                </ul>
-            </div>
-            <div className='responses-container'>
-                <ul className='responses'>
-                <div className='responses-header'>Responses:</div>
-                    {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
-                    <div>
-                        <li className='response'>
-                            <i>{response.User.username}:</i>
+    if (sessionUser.id === question.userId) {
+        return (
+            <>
+                <div className='question-container'>
+                    <ul>
+                        <li className='question'>
+                            <i>{question.User.username}: </i>
+                            <li>{question.question}</li>
+                            <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
                         </li>
-                        <li className='response-text'>{response.response}</li>
-                        <button id={response.id} onClick={handleResponseDelete}>Delete</button>
-                        <div className='rating-container'>
-                            <div className='response-rating'>
-                                    <button className='vote-button' onClick={() => {handleVote(response.id, response.rating + 1, response.questionId)}}>
-                                    <div alt='upvote' className='upvote-button'/>
-                                    </button>
+                    </ul>
+                </div>
+                <div className='responses-container'>
+                    <ul className='responses'>
+                        <div className='responses-header'>Responses:</div>
+                        {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response =>
+                            <div>
+                                <li className='response'>
+                                    <i>{response.User.username}:</i>
+                                </li>
+                                <li className='response-text'>{response.response}</li>
+                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId}>Delete</button>
+                                <div className='rating-container'>
+                                    <div className='response-rating'>
+                                        <button className='vote-button' onClick={() => { handleVote(response.id, response.rating + 1, response.questionId) }}>
+                                            <div alt='upvote' className='upvote-button' />
+                                        </button>
                                         <div className='rating-number'>{response.rating}</div>
-                                    <button className='vote-button' onClick={() => { handleVote(response.id, response.rating - 1, response.questionId) }}>
-                                        <div alt='downvote' className='downvote-button'/>
-                                    </button>
+                                        <button className='vote-button' onClick={() => { handleVote(response.id, response.rating - 1, response.questionId) }}>
+                                            <div alt='downvote' className='downvote-button' />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    )}
-                <li id='new-response-container'>
-                    <Response/>
-                </li>
-                </ul>
-            </div>
-        </>
-    )
+                        )}
+                        <li id='new-response-container'>
+                            <Response />
+                        </li>
+                    </ul>
+                </div>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div className='question-container'>
+                    <ul>
+                        <li className='question'>
+                            <i>{question.User.username}: </i>
+                            <li>{question.question}</li>
+                            <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
+                        </li>
+                    </ul>
+                </div>
+                <div className='responses-container'>
+                    <ul className='responses'>
+                        <div className='responses-header'>Responses:</div>
+                        {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response =>
+                            <div>
+                                <li className='response'>
+                                    <i>{response.User.username}:</i>
+                                </li>
+                                <li className='response-text'>{response.response}</li>
+                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId}>Delete</button>
+                                <div className='rating-container'>
+                                    <div className='response-rating'>
+                                        <button className='vote-button' onClick={() => { handleVote(response.id, response.rating + 1, response.questionId) }}>
+                                            <div alt='upvote' className='upvote-button' />
+                                        </button>
+                                        <div className='rating-number'>{response.rating}</div>
+                                        <button className='vote-button' onClick={() => { handleVote(response.id, response.rating - 1, response.questionId) }}>
+                                            <div alt='downvote' className='downvote-button' />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        <li id='new-response-container'>
+                            <Response />
+                        </li>
+                    </ul>
+                </div>
+            </>
+        )
+    }
 };
 
 export default QuestionPage;

@@ -28,7 +28,6 @@ router.post(
 router.delete(
     '/',
     asyncHandler(async (req, res) => {
-        console.log(req.body, '<-- req')
         const response = await Response.findByPk(req.body.responseId, {
             include: [{ model: User, include: [Question] }]
         });
@@ -39,7 +38,6 @@ router.delete(
             include: [{ model: User }, { model: Response, include: [User] }]
         });
 
-        console.log(question, '<-- question find')
         res.json({ question });
     })
 );
