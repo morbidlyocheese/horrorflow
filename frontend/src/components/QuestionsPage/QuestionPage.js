@@ -13,6 +13,7 @@ import '../ResponsesPage/Response.css';
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
     const { questionId } = useParams();
+    const { responseId } = useParams();
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -35,8 +36,7 @@ function QuestionPage({ data }) {
     const handleQuestionDelete = (e) => {
         e.preventDefault();
         setRedirect(true);
-        // console.log(questionId, userId);
-        // console.log(question.userId, sessionUser.id, '<-- question userId');
+
         if (question.userId === sessionUser.id) {
             dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
         } else {
@@ -49,9 +49,14 @@ function QuestionPage({ data }) {
     }
 
     const handleResponseDelete = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const responseId = e.target.id;
-        dispatch(questionActions.deleteResponse(responseId, userId, questionId));
+
+        if (question.userId !== sessionUser.id) {
+            alert('Error deleting response.');
+        } else {
+            dispatch(questionActions.deleteResponse(responseId, userId, questionId));
+        }
     }
 
     return (

@@ -52,36 +52,6 @@ function removeResponse(response) {
     };
 };
 
-export const newResponse = (data) => async (dispatch) => {
-    const { questionId, userId, response } = data;
-    const res = await fetch('/api/responses/', {
-        method: 'POST',
-        body: JSON.stringify({
-            questionId,
-            userId,
-            response
-        }),
-    });
-    console.log(displayQuestions, '<-- data')
-    dispatch(displayQuestion(res.data.question));
-}
-
-export const deleteResponse = (responseId, userId, questionId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/responses/`, {
-            method: 'DELETE',
-            body: JSON.stringify({
-                responseId,
-                userId,
-                questionId
-            })
-        })
-        console.log(res.data, '<-- res.data')
-        dispatch(displayQuestion(res.data.question));
-        return res;
-    }
-}
-
 export const newQuestion = (data) => async (dispatch) => {
     const { question, userId } = data;
     const res = await fetch('/api/questions', {
@@ -94,6 +64,19 @@ export const newQuestion = (data) => async (dispatch) => {
     return dispatch(createQuestion(res.data.question));
 }
 
+export const newResponse = (data) => async (dispatch) => {
+    const { questionId, userId, response } = data;
+    const res = await fetch('/api/responses/', {
+        method: 'POST',
+        body: JSON.stringify({
+            questionId,
+            userId,
+            response
+        }),
+    });
+    dispatch(displayQuestion(res.data.question));
+}
+
 export const deleteQuestion = (questionId, userId) => async (dispatch) => {
     const res = await fetch(`/api/questions/`, {
         method: 'DELETE',
@@ -104,6 +87,22 @@ export const deleteQuestion = (questionId, userId) => async (dispatch) => {
     });
     dispatch(removeQuestion(res));
     return res;
+}
+
+export const deleteResponse = (responseId, userId, questionId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/responses/`, {
+            method: 'DELETE',
+            body: JSON.stringify({
+                responseId,
+                userId,
+                questionId
+            })
+        })
+
+        dispatch(displayQuestion(res.data.question));
+        return res;
+    }
 }
 
 export const questionList = () => async (dispatch) => {
@@ -127,9 +126,6 @@ export const changeVote = (responseId, rating, questionId) => async (dispatch) =
     dispatch(displayQuestion(res.data.question));
 }
 
-
-
-
 const questionReducer = (state = [], action) => {
     let newState;
     switch(action.type) {
@@ -141,7 +137,6 @@ const questionReducer = (state = [], action) => {
             return [action.payload];
         case REMOVE_QUESTION:
             newState = state.filter(question => question === action.payload);
-            // newState.question = null;
             return newState;
         case CREATE_RESPONSE:
             newState = [...state];
