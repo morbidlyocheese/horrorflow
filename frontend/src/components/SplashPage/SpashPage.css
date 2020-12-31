@@ -1,7 +1,8 @@
-.bg {
+.bg-splash {
     height: 100%;
-    background-size: cover;
+    background-size: fill;
     opacity: 0.3;
+    display: block;
 }
 
 .spashpage-container {
@@ -20,6 +21,6 @@ h1 {
     color: #A9A9A9;
     padding: 20px;
     width: 50%;
-    height: 220px;
+    height: 260px;
     margin-right: 30px;
 }

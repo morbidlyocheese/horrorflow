@@ -3,6 +3,16 @@ body {
     background-color: #2B2F41;
 }
 
+.nav-container {
+    top: 0;
+    position: static;
+    background-color: #212738;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    opacity: 100;
+}
+
 .nav {
     list-style-type: none;
     background-color: #212738;

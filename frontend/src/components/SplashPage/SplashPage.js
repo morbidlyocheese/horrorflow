@@ -10,7 +10,7 @@ function SplashPage({ data }) {
 
     return (
         <div className='splash-container'>
-            <img className='bg' alt='jakob-owens photo from unsplash: The Strangers' src={img}/>
+            <img className='bg-splash' alt='jakob-owens photo from unsplash: The Strangers' src={img}/>
             <div className='text'>
                 <h1>Welcome to Horrorflow!</h1>
                 <p>Horrorflow, keep the horror flow going by asking and/or posting questions about the horror movies you've seen recently. Ask questions about confusing endings, or discuss things you wish a filmmaker would do. All horror is welcome, new and old alike!</p><br/>

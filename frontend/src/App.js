@@ -26,26 +26,28 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded}/>
       {isLoaded && (
-        <Switch>
-          <Route path='/login'>
-            <LoginFormPage/>
-          </Route>
-          <Route path='/signup'>
-            <SignupFormPage/>
-          </Route>
-          <Route path='/new-question'>
-            <QuestionsPage/>
-          </Route>
-          <Route path='/questions/:questionId'>
-            {sessionUser ? <QuestionPage/> : <Redirect to='/signup'/>}
-          </Route>
-          <Route path='/questions'>
-            <ListQuestionsPage/>
-          </Route>
-          <Route path='/'>
+        <>
+          <Switch>
+            <Route path='/login'>
+              <LoginFormPage/>
+            </Route>
+            <Route path='/signup'>
+              <SignupFormPage/>
+            </Route>
+            <Route path='/new-question'>
+              <QuestionsPage/>
+            </Route>
+            <Route path='/questions/:questionId'>
+              {sessionUser ? <QuestionPage/> : <Redirect to='/signup'/>}
+            </Route>
+            <Route path='/questions'>
+              <ListQuestionsPage/>
+            </Route>
+          </Switch>
+          <Route exact path='/'>
             <SplashPage/>
           </Route>
-        </Switch>
+        </>
       )}
     </>
   );

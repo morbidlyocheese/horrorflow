@@ -1,10 +1,11 @@
 [Horrorflow]() - Asking the important questions about Horror films.
 ---
-*by [Adam Jacobson](https://github.com/djangothesolarboy)*
+*by [Damien Darko](https://github.com/djangothesolarboy)*
 
 Table Of Contents:
 ---
 - [Description](https://github.com/djangothesolarboy/horrorflow#Description)
+- [Assets](https://github.com/djangothesolarboy/horrorflow#Assets)
 - [Application Architecture && Technologies Used](https://github.com/djangothesolarboy/horrorflow#Application-Architecture-&&-Technologies-Used)
 - [Installation](https://github.com/djangothesolarboy/horrorflow#Installation)
 - [Technology Shields](https://github.com/djangothesolarboy/horrorflow#Technology-Shields)
@@ -15,6 +16,18 @@ Table Of Contents:
 Description:
 ---
 Horrorflow is a clone of Stack Overflow, but with a twist, like most good horror films! Horrorflow is meant to be a place where horror film lovers can go to ask the tough questions. It is an idea that I am sure many film watchers have wondered. Have you ever watched a horror film and wondered *'What the heck was that ending?!*? Well Horrorflow aims to be your one-stop-shop to ask the **Who What When Why**, instead of scouring the internet endlessly for answers!
+
+If you would like to see an idea of things I would like to implement in the future take a look [here](https://github.com/djangothesolarboy/horrorflow/projects/1). My hopes are to expand the site some more, and possible incorporate it with my Capstone project.
+
+Assets:
+---
+The assets/icons(Profile button, New Question, Machetes, && Favicon) used for this project were all made by myself using Aseprite.
+- Favicon: ![favicon](./frontend/public/favicon.png)
+- Profile Button: ![profile-button](./frontend/src/components/Navigation/assets/profile.png)
+- New Question Button: ![new-question-button](./frontend/src/components/Navigation/assets/question.png)
+- Upvote/Downvote Machetes: ![downvote](./frontend/src/components/ResponsesPage/assets/down.png) ![upvote](./frontend/src/components/ResponsesPage/assets/up.png)
+
+The background image on the splash page is from [unsplash.com - Jakob Owens](https://unsplash.com/photos/W0hkz1EnX8I). And the font I used is [Victor Mono](https://rubjo.github.io/victor-mono/).
 
 Application Architecture && Technologies Used:
 ---
