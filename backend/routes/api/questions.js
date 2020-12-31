@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
@@ -38,12 +39,7 @@ router.get(
     asyncHandler(async (req, res) => {
         const questionId = parseInt(req.params.id);
         const question = await Question.findByPk(questionId, {
-            include: [
-                { model: User }, 
-                { model: Response, 
-                    order: [['rating', 'ASC']], 
-                    include: [User] 
-                }]
+            include: [{ model: User }, { model: Response, include: [User] }]
         });
 
         return res.json({
@@ -67,5 +63,31 @@ router.post(
     })
 )
 
+router.delete(
+    '/',
+    asyncHandler(async (req, res) => {
+        const question = await Question.findByPk(req.body.questionId, {
+            include: [{ 
+                model: Response, include: [User] }]
+        });
+
+        const responses = await Response.findAll({
+            where: {
+                questionId: question.id
+            }
+        })
+
+        if (responses) {
+            await Response.destroy({
+            where: {
+                questionId: question.id
+            }
+            });
+        }
+        await question.destroy();
+
+        res.json('Delete completed.');
+   })
+);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -21,7 +21,7 @@ function QuestionsPage() {
     }
 
     if (redirect) {
-        return <Redirect to='/questions'/>
+        return <Redirect to='/questions/'/>
     }
 
     const handleChange = (e) => {

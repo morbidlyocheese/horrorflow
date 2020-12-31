@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
+import * as questionActions from './store/question';
 import Navigation from './components/Navigation';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 import ListQuestionsPage from './components/QuestionsPage/ListQuestionsPage';
@@ -18,6 +19,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  
 
   if(!isLoaded) return null;
 

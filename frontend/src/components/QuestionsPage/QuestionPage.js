@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import * as questionActions from '../../store/question';
 import Response from '../ResponsesPage/Response';
@@ -12,6 +13,8 @@ import '../ResponsesPage/Response.css';
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
     const { questionId } = useParams();
+
+    const sessionUser = useSelector(state => state.session.user);
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
@@ -27,26 +30,51 @@ function QuestionPage({ data }) {
         dispatch(questionActions.question(questionId))
     }, [dispatch, questionId]);
 
+    const [redirect, setRedirect] = useState(false);
+
+    const handleQuestionDelete = (e) => {
+        e.preventDefault();
+        setRedirect(true);
+        // console.log(questionId, userId);
+        // console.log(question.userId, sessionUser.id, '<-- question userId');
+        if (question.userId === sessionUser.id) {
+            dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
+        } else {
+            console.log('Error deleting question.');
+        }
+    }
+    
+    if (redirect) {
+        return <Redirect to='/questions/' />
+    }
+
+    const handleResponseDelete = (e) => {
+        // e.preventDefault();
+        const responseId = e.target.id;
+        dispatch(questionActions.deleteResponse(responseId, userId, questionId));
+    }
+
     return (
         <>
             <div className='question-container'>
                 <ul>
                     <li className='question'>
                         <i>{question.User.username}: </i>
-                        {question.question}
+                        <li>{question.question}</li>
+                        <button onClick={handleQuestionDelete}>Delete</button>
                     </li>
                 </ul>
             </div>
             <div className='responses-container'>
                 <ul className='responses'>
                 <div className='responses-header'>Responses:</div>
-                {console.log(question.Responses, '-----')}
-                    {question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
+                    {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
                     <div>
                         <li className='response'>
                             <i>{response.User.username}:</i>
                         </li>
                         <li className='response-text'>{response.response}</li>
+                        <button id={response.id} onClick={handleResponseDelete}>Delete</button>
                         <div className='rating-container'>
                             <div className='response-rating'>
                                     <button className='vote-button' onClick={() => {handleVote(response.id, response.rating + 1, response.questionId)}}>

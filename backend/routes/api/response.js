@@ -16,13 +16,32 @@ router.post(
         });
 
         const question = await Question.findByPk(questionId, {
-            include: [{ model: User }, { model: Response, order: [['rating', 'DESC']], include: [User] }]
+            include: [{ model: User }, { model: Response, include: [User] }]
         });
 
         return res.json({
             question
         });
     }),
+);
+
+router.delete(
+    '/',
+    asyncHandler(async (req, res) => {
+        console.log(req.body, '<-- req')
+        const response = await Response.findByPk(req.body.responseId, {
+            include: [{ model: User, include: [Question] }]
+        });
+        
+        await response.destroy();
+        
+        const question = await Question.findByPk(req.body.questionId, {
+            include: [{ model: User }, { model: Response, include: [User] }]
+        });
+
+        console.log(question, '<-- question find')
+        res.json({ question });
+    })
 );
 
 module.exports = router;
