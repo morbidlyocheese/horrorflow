@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
@@ -65,23 +66,27 @@ router.post(
 router.delete(
     '/',
     asyncHandler(async (req, res) => {
-        console.log(req.body.questionId, '--------')
-
-        // const userId = res.locals.user.dataValues.id;
-
         const question = await Question.findByPk(req.body.questionId, {
-            include: [{ model: Response, include: [User] }]
+            include: [{ 
+                model: Response, include: [User] }]
         });
 
-        console.log(question.userId, '~~~~~~~~~')
+        const responses = await Response.findAll({
+            where: {
+                questionId: question.id
+            }
+        })
 
-        if (question.userId !== req.body.userId) {
-            
-            return res.status(500).json({ code: 500, message: 'There was an error deleting the question.' });
-        } else {
-            question.destroy();
-            res.status(200).json({ code: 200, message: 'Question deleted successfully.' });
+        if (responses) {
+            await Response.destroy({
+            where: {
+                questionId: question.id
+            }
+            });
         }
+        await question.destroy();
+
+        res.json('Delete completed.');
    })
 );
 

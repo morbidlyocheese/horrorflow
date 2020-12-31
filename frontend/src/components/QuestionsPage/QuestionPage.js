@@ -13,7 +13,8 @@ import '../ResponsesPage/Response.css';
 function QuestionPage({ data }) {
     const dispatch = useDispatch();
     const { questionId } = useParams();
-    const { responseId } = useParams();
+
+    const sessionUser = useSelector(state => state.session.user);
 
     const question = useSelector((state) => state.questions[0]) || { question: '', User: {}, Responses: [] };
 
@@ -34,8 +35,13 @@ function QuestionPage({ data }) {
     const handleQuestionDelete = (e) => {
         e.preventDefault();
         setRedirect(true);
-        console.log(questionId, userId);
-        dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
+        // console.log(questionId, userId);
+        // console.log(question.userId, sessionUser.id, '<-- question userId');
+        if (question.userId === sessionUser.id) {
+            dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
+        } else {
+            console.log('Error deleting question.');
+        }
     }
     
     if (redirect) {
@@ -44,9 +50,8 @@ function QuestionPage({ data }) {
 
     const handleResponseDelete = (e) => {
         // e.preventDefault();
-        setRedirect(true);
-        console.log(responseId, userId, '-----delete-----');
-        dispatch(questionActions.deleteResponse(userId, responseId));
+        const responseId = e.target.id;
+        dispatch(questionActions.deleteResponse(responseId, userId, questionId));
     }
 
     return (
@@ -63,13 +68,13 @@ function QuestionPage({ data }) {
             <div className='responses-container'>
                 <ul className='responses'>
                 <div className='responses-header'>Responses:</div>
-                    {question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
+                    {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response => 
                     <div>
                         <li className='response'>
                             <i>{response.User.username}:</i>
                         </li>
                         <li className='response-text'>{response.response}</li>
-                        <button onClick={handleResponseDelete}>Delete</button>
+                        <button id={response.id} onClick={handleResponseDelete}>Delete</button>
                         <div className='rating-container'>
                             <div className='response-rating'>
                                     <button className='vote-button' onClick={() => {handleVote(response.id, response.rating + 1, response.questionId)}}>
