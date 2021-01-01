@@ -36,7 +36,7 @@ function QuestionPage({ data }) {
     const handleQuestionDelete = (e) => {
         e.preventDefault();
         
-        if (question.userId === sessionUser.id) {
+        if (question.userId === sessionUser.id || sessionUser.username === 'admin') {
             dispatch(questionActions.deleteQuestion(questionId, userId, response.id));
             setRedirect(true);
         } else {
@@ -76,7 +76,7 @@ function QuestionPage({ data }) {
                                     <i>{response.User.username}:</i>
                                 </li>
                                 <li className='response-text'>{response.response}</li>
-                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId}>Delete</button>
+                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId && sessionUser.username !== 'admin'}>Delete</button>
                                 <div className='rating-container'>
                                     <div className='response-rating'>
                                         <button className='vote-button' onClick={() => { handleVote(response.id, response.rating + 1, response.questionId) }}>
@@ -118,7 +118,7 @@ function QuestionPage({ data }) {
                                     <i>{response.User.username}:</i>
                                 </li>
                                 <li className='response-text'>{response.response}</li>
-                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId}>Delete</button>
+                                <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId && sessionUser.username !== 'admin'}>Delete</button>
                                 <div className='rating-container'>
                                     <div className='response-rating'>
                                         <button className='vote-button' onClick={() => { handleVote(response.id, response.rating + 1, response.questionId) }}>
