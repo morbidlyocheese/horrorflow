@@ -23,7 +23,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
