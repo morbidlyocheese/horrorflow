@@ -4,7 +4,7 @@
   "engines": {
     "node": "12.x"
   },
-  "description": "[Horrorflow]() - Asking the important questions about Horror films. --- *by [Adam Jacobson](https://github.com/djangothesolarboy)*",
+  "description": "[Horrorflow](https://horrorflow.herokuapp.com/) - Asking the important questions about Horror films. --- *by [Damien Darko](https://github.com/djangothesolarboy)*",
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
