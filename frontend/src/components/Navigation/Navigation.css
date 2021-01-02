@@ -5,7 +5,8 @@ body {
 
 .nav-container {
     top: 0;
-    position: static;
+    left: 0;
+    position: fixed;
     background-color: #212738;
     height: 40px;
     width: 100%;
