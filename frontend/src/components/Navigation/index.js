@@ -41,7 +41,7 @@ function Navigation({ isLoaded }) {
             <div className='footer'>
                 <ul>
                     <li>
-                        <a href='https://github.com/djangothesolarboy/horrorflow' className='footer-link' target='_blank'>Github</a>
+                        <a href='https://github.com/djangothesolarboy/horrorflow' className='footer-link' target='_blank' rel='noreferrer'>Github</a>
                     </li>
                 </ul>
             </div>

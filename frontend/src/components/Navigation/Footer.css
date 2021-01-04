@@ -6,6 +6,7 @@
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
     box-shadow: 0 8px 8px 0 rgba(33, 39, 56, 0.2);
+    z-index: 1;
 }
 
 .footer-link {
