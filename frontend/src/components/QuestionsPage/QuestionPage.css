@@ -3,6 +3,7 @@
     display: flex;
     margin-top: 100px;
     font-family: 'Roboto Mono', monospace;
+    position: sticky;
 }
 
 .question {
