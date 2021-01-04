@@ -1,4 +1,4 @@
 body {
-    background-color: #2B2F41;
+    background-image: linear-gradient(to right, rgba(43, 47, 65, 1), rgba(68, 66, 90, 1), rgba(105, 112, 144, 1));
     font-family: 'Roboto Mono', monospace;
 }
