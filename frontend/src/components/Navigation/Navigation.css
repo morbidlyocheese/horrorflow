@@ -41,6 +41,8 @@ body {
     text-align: center;
     height: 40px;
     width: 60px;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
 }
 
 .nav-link:hover,
@@ -52,6 +54,11 @@ body {
 .nav .nav-link.active {
     background-color: #697090;
     color: #A9A9A9;
+}
+
+.link-new_question:hover {
+    transform: rotate(360deg);
+    transition: all 0.3s ease-in-out 0s;
 }
 
 
