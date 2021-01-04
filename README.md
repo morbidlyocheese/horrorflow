@@ -24,7 +24,7 @@ Assets:
 The assets/icons(Profile button, New Question, Machetes, && Favicon) used for this project were all made by myself using Aseprite.
 - Favicon: ![favicon](./frontend/public/favicon.png)
 - Profile Button: ![profile-button](./frontend/src/components/Navigation/assets/profile.png)
-- New Question Button: ![new-question-button](./frontend/src/components/Navigation/assets/question.png)
+- New Question Button: ![new-question-button](./frontend/src/components/Navigation/assets/crossbones.png)
 - Upvote/Downvote Machetes: ![downvote](./frontend/src/components/ResponsesPage/assets/down.png) ![upvote](./frontend/src/components/ResponsesPage/assets/up.png)
 
 The background image on the splash page is from [unsplash.com - Jakob Owens](https://unsplash.com/photos/W0hkz1EnX8I). And the font I used is [Victor Mono](https://rubjo.github.io/victor-mono/).
