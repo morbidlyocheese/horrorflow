@@ -15,6 +15,15 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
     font-family: 'Roboto Mono', monospace;
+    padding-top: 30px;
+}
+
+.question-text {
+    overflow-x: auto;
+    overflow-y: auto;
+    word-break: break-word;
+    padding: 25px;
+    margin-top: 25px;
 }
 
 /* delete buttons */
@@ -26,10 +35,12 @@
     height: 40px;
     width: 60px;
     margin: 5px;
-    padding: 2px;
+    padding: 12px;
     color: #A9A9A9;
     background-color: #697090;
     border-radius: 5px;
+    margin-bottom: 25px;
+    margin-top: 15px;
 }
 
 .delete-button:hover {

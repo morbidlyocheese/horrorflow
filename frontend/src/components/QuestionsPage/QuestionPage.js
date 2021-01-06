@@ -61,8 +61,8 @@ function QuestionPage({ data }) {
                 <div className='question-container'>
                     <ul>
                         <li className='question'>
-                            <i>{question.User.username}: </i>
-                            <li>{question.question}</li>
+                            <i className='question-username'>{question.User.username}: </i>
+                            <li className='question-text'>{question.question}</li>
                             <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
                         </li>
                     </ul>

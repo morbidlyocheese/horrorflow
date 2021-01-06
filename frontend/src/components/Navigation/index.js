@@ -39,11 +39,8 @@ function Navigation({ isLoaded }) {
                 </div>
             </div>
             <div className='footer'>
-                <ul>
-                    <li>
-                        <a href='https://github.com/djangothesolarboy/horrorflow' className='footer-link' target='_blank' rel='noreferrer'>Github</a>
-                    </li>
-                </ul>
+                <Link to='https://github.com/djangothesolarboy/horrorflow' id='github' className='footer-link' target='_blank' rel='noreferrer'>Github</Link>
+                <Link to='https://www.linkedin.com/in/damien-darko/' id='linkedin' className='footer-link' target='_blank' rel='noreferrer'>Linkedin</Link>
             </div>
         </>
     )

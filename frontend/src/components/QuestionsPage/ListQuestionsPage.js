@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './ListQuestionsPage.css';
 import * as questionActions from '../../store/question';
@@ -28,8 +28,8 @@ function ListQuestionsPage({ data }) {
             {<ul>
                 {questions && questions.map((question) => 
                 <li className='question'>
-                        <Link to={`/questions/${question.id}`}>{question.question}</Link>
-                {question.User && <p>Posted by: {question.User.username}</p>}
+                        <Link to={`/questions/${question.id}`} className='question-link'>{question.question}</Link>
+                {question.User && <p className='question-username'>Posted by: {question.User.username}</p>}
                 <p className='question-created'>Created On: {questionDate()}</p>
                 </li>)}
                 <li>{data}</li>

@@ -73,7 +73,6 @@
 }
 
 .response-responded {
-    /* display: flex; */
     background-color: #212738;
     max-width: 500px;
     max-height: 500px;
@@ -84,7 +83,6 @@
 }
 
 .response-text {
-    /* display: flex; */
     background-color: #212738;
     max-width: 500px;
     max-height: 500px;
@@ -95,6 +93,11 @@
     box-shadow: 0 4px 8px 0 rgba(33, 39, 56, 0.2), 0 6px 20px 0 rgba(33, 39, 56, 0.19);
     font-family: 'Roboto Mono', monospace;
     align-items: center;
+    overflow-x: auto;
+    overflow-y: auto;
+    word-break: break-word;
+    padding: 25px;
+    padding-bottom: 25px;
 }
 
 /* rating styles  */

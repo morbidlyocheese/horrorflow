@@ -1,4 +1,5 @@
 .footer {
+    display: flex;
     bottom: 0;
     position: fixed;
     width: 100%;
@@ -10,7 +11,19 @@
 }
 
 .footer-link {
-    display: flex;
     justify-content: center;
     color: #A9A9A9;
+    margin-right: 5px;
+}
+
+.footer-link:hover {
+    color: #697090;
+}
+
+#linkedin {
+    justify-content: center;
+}
+
+#github {
+    justify-content: center;
 }
