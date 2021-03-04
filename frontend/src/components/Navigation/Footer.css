@@ -1,7 +1,9 @@
-.footer {
+.footer-container {
     display: flex;
+    justify-content: center;
     bottom: 0;
     position: fixed;
+    height: 60px;
     width: 100%;
     background-color: #212738;
     font-family: 'Roboto Mono', monospace;
@@ -20,10 +22,8 @@
     color: #697090;
 }
 
-#linkedin {
-    justify-content: center;
-}
-
-#github {
-    justify-content: center;
+.about-link:hover {
+    transition: all 1s ease-out;
+    transform: scale(1.5);
+    filter: invert(100%);
 }

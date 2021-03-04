@@ -3,9 +3,13 @@ import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 import ProfileButton from './ProfileButton';
-import QuestionsPage from '../QuestionsPage/QuestionsPage';
+
 import './Navigation.css';
 import './Footer.css';
+
+import angellist from './assets/angellist.png';
+import github from './assets/github.png';
+import linkedin from './assets/linkedin.png';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -38,9 +42,16 @@ function Navigation({ isLoaded }) {
                     </ul>
                 </div>
             </div>
-            <div className='footer'>
-                <Link to='https://github.com/djangothesolarboy/horrorflow' id='github' className='footer-link' target='_blank' rel='noreferrer'>Github</Link>
-                <Link to='https://www.linkedin.com/in/damien-darko/' id='linkedin' className='footer-link' target='_blank' rel='noreferrer'>Linkedin</Link>
+            <div className='footer-container'>
+                <a className='about-link' href='https://angel.co/u/damien-darko' rel="noreferrer" target="_blank">
+                    <img src={angellist} alt='angellist' />
+                </a>
+                <a className='about-link' href='https://github.com/djangothesolarboy' rel="noreferrer" target="_blank">
+                    <img src={github} alt='github' />
+                </a>
+                <a className='about-link' href='https://www.linkedin.com/in/damien-darko/' rel="noreferrer" target="_blank">
+                    <img src={linkedin} alt='linkedin' />
+                </a>
             </div>
         </>
     )
