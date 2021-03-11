@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
 import { fetch } from './csrf';
 
 const CREATE_QUESTION = 'question/createQuestion';
@@ -9,6 +8,9 @@ const DISPLAY_QUESTION = 'question/displayQuestion';
 
 const CREATE_RESPONSE = 'response/createResponse';
 const REMOVE_RESPONSE = 'response/removeResponse';
+
+const USER_QUESTIONS = 'user/questions';
+const GET_USER = 'user/getUser';
 
 function createQuestion(question) {
     return {
@@ -28,6 +30,20 @@ function displayQuestions(questions) {
     return {
         type: DISPLAY_QUESTIONS,
         payload: questions,
+    }
+}
+
+function userQuestions(questions) {
+    return {
+        type: USER_QUESTIONS,
+        payload: questions
+    }
+}
+
+function getUser(user) {
+    return {
+        type: GET_USER,
+        payload: user
     }
 }
 
@@ -111,6 +127,20 @@ export const questionList = () => async (dispatch) => {
     return res;
 }
 
+export const displayUserQuestions = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/profile`);
+    console.log('res questions ->', res.data.questions)
+    dispatch(userQuestions(res.data.questions));
+    // dispatch(getUser(res.data.user));
+    return res;
+}
+
+export const getUserInfo = (id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${id}/profile`);
+    console.log('res user->', res.data.user)
+    return res;
+}
+
 export const question = (id) => async (dispatch) => {
     const res = await fetch(`/api/questions/${id}`);
     dispatch(displayQuestion(res.data.question));
@@ -134,6 +164,10 @@ const questionReducer = (state = [], action) => {
         case DISPLAY_QUESTIONS:
             return action.payload;
         case DISPLAY_QUESTION:
+            return [action.payload];
+        case USER_QUESTIONS:
+            return [action.payload];
+        case GET_USER:
             return [action.payload];
         case REMOVE_QUESTION:
             newState = state.filter(question => question === action.payload);

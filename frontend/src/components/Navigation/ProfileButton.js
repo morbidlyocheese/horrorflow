@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import * as sessionActions from '../../store/session';
@@ -7,7 +7,7 @@ import * as sessionActions from '../../store/session';
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    
+    const userId = useSelector((state) => state.session.user.id);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -48,6 +48,7 @@ function ProfileButton({ user }) {
                     <ul className='profile-dropdown'>
                         <li>{user.username}</li>
                         <li>{user.email}</li>
+                        <a className='profile-link' href={`/users/${userId}/profile`}>profile</a>
                         <li>
                             <button className='logout-button' onClick={logout}>Logout</button>
                         </li>

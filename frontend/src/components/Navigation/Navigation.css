@@ -91,10 +91,13 @@ body {
 
 .profile-dropdown {
     position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     color: #A9A9A9;
     max-width: 280px;
     word-wrap: break-word;
-    background-color: #697090;
+    background-color: #2c3042;
     align-items: center;
     border-radius: 5px;
     padding: 10px;
@@ -110,7 +113,7 @@ body {
     border-right: 10px solid transparent;
     margin-left: 21px;
     border-radius: 5%;
-    border-bottom: 10px solid #697090;
+    border-bottom: 10px solid #2c3042;
 }
 
 .logout-button {
@@ -131,4 +134,13 @@ body {
     background-color: #34394B;
     border: 2px solid #212738;
     border-radius: 5%;
+}
+
+.profile-link {
+    color: #978e8e;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    color: white;
 }

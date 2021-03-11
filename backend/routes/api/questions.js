@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const { Question, User, Response } = require('../../db/models');
 
+// create new question
 router.post(
     '/',
     asyncHandler(async (req, res) => {
@@ -21,6 +22,7 @@ router.post(
     }),
 );
 
+// all questions (home page)
 router.get(
     '/',
     asyncHandler(async (req, res) => {
@@ -34,6 +36,7 @@ router.get(
     }),
 );
 
+// single question with responses
 router.get(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
@@ -63,6 +66,7 @@ router.post(
     })
 )
 
+// delete question with responses
 router.delete(
     '/',
     asyncHandler(async (req, res) => {

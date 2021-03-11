@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Question } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -43,5 +43,34 @@ router.post(
         });
     }),
 );
+
+router.get(
+    '/:id(\\d+)/profile',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const userId = parseInt(req.params.id);
+
+        const questions = await Question.findAll({
+            where: {
+                userId: userId
+            }
+        });
+        
+        const user = await User.findByPk(userId);
+
+        return res.json({ questions, user });
+    })
+)
+
+router.get(
+    '/:id(\\d+)/profile',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const userId = parseInt(req.params.id);
+        const user = await User.findByPk(userId);
+
+        return res.json({ user });
+    })
+)
 
 module.exports = router;

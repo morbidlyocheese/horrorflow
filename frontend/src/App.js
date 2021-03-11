@@ -11,6 +11,7 @@ import QuestionsPage from './components/QuestionsPage/QuestionsPage';
 import ListQuestionsPage from './components/QuestionsPage/ListQuestionsPage';
 import QuestionPage from './components/QuestionsPage/QuestionPage';
 import SplashPage from './components/SplashPage/SplashPage';
+import UserPage from './components/UserPage/UserPage';
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route path='/questions'>
               <ListQuestionsPage/>
+            </Route>
+            <Route path='/users/:id/profile'>
+              {sessionUser ? <UserPage/> : <Redirect to='/signup'/>}
             </Route>
           </Switch>
           <Route exact path='/'>
