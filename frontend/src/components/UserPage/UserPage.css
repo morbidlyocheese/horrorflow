@@ -38,3 +38,7 @@
     color: #A9A9A9;
     padding: 25px;
 }
+
+.profile-question:hover {
+    color: #697090;
+}

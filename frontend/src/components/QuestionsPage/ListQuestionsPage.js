@@ -30,8 +30,8 @@ function ListQuestionsPage({ data }) {
                 {questions && questions.map((question) => 
                     <li className='question' key={question.id}>
                         <Link to={`/questions/${question.id}`} className='question-link'>{question.question}</Link>
-                {question.User && <p className='question-username'>Posted by: {question.User.username}</p>}
-                <p className='question-created'>Created On: {questionDate()}</p>
+                        <p className='posted-by'>Posted by: </p>{question.User &&  <a href={`/users/${question.User.id}/profile`} className='question-username'> {question.User.username}</a>}
+                <p className='question-created'>Posted On: {questionDate()}</p>
                 </li>)}
                 <li>{data}</li>
             </ul>}

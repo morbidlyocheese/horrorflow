@@ -34,10 +34,22 @@
     color: #A9A9A9;
 }
 
-.question-link:hover {
+.question-link:hover,
+.question-username:hover {
     color: #697090;
 }
 
 .question-created, .question-username {
-    padding-top: 10px;
+    padding-top: 5px;
+}
+
+.question-username {
+    color: #A9A9A9;
+
+}
+
+.posted-by {
+    margin-top: 10px;
+    color: #A9A9A9;
+
 }
