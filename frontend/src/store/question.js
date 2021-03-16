@@ -40,10 +40,10 @@ function userQuestions(questions) {
     }
 }
 
-function getUser(user) {
+function getUser(profile) {
     return {
         type: GET_USER,
-        payload: user
+        payload: profile
     }
 }
 
@@ -130,16 +130,17 @@ export const questionList = () => async (dispatch) => {
 export const displayUserQuestions = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/profile`);
     console.log('res questions ->', res.data.questions)
+    console.log('res questions ->', res.data)
     dispatch(userQuestions(res.data.questions));
-    // dispatch(getUser(res.data.user));
+    dispatch(getUser(res.data.profile));
     return res;
 }
 
-export const getUserInfo = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/profile`);
-    console.log('res user->', res.data.user)
-    return res;
-}
+// export const getUserInfo = (id) => async (dispatch) => {
+//     const res = await fetch(`/api/users/${id}/profile`);
+//     console.log('res user->', res.data)
+//     return res;
+// }
 
 export const question = (id) => async (dispatch) => {
     const res = await fetch(`/api/questions/${id}`);
@@ -156,19 +157,19 @@ export const changeVote = (responseId, rating, questionId) => async (dispatch) =
     dispatch(displayQuestion(res.data.question));
 }
 
-const questionReducer = (state = [], action) => {
+const questionReducer = (state = { question: [], questions: [], profile: {}, responses: []}, action) => {
     let newState;
     switch(action.type) {
         case CREATE_QUESTION:
-            return [...state, action.payload];
+            return { ...state, question: action.payload };
         case DISPLAY_QUESTIONS:
-            return action.payload;
+            return { ...state, questions: [action.payload] };
         case DISPLAY_QUESTION:
             return [action.payload];
         case USER_QUESTIONS:
-            return [action.payload];
+            return { ...state, questions: action.payload };
         case GET_USER:
-            return [action.payload];
+            return { ...state, profile: action.payload };
         case REMOVE_QUESTION:
             newState = state.filter(question => question === action.payload);
             return newState;

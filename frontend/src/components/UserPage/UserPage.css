@@ -28,6 +28,7 @@
 .user-page-question-title {
     display: flex;
     justify-content: center;
+    text-align: center;
     color: #A9A9A9;
     font-family: 'Roboto Mono', monospace;
 }

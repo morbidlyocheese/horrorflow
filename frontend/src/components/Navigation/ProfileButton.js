@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
                     <ul className='profile-dropdown'>
                         <li>{user.username}</li>
                         <li>{user.email}</li>
-                        <a className='profile-link' href={`/users/${userId}/profile`}>profile</a>
+                        <a className='profile-link' href={`/users/${userId}/profile`}>Profile</a>
                         <li>
                             <button className='logout-button' onClick={logout}>Logout</button>
                         </li>

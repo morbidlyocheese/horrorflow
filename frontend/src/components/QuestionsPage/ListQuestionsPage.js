@@ -8,7 +8,8 @@ import * as questionActions from '../../store/question';
 function ListQuestionsPage({ data }) {
     const dispatch = useDispatch();
 
-    const questions = useSelector((state) => state.questions);
+    const questions = useSelector((state) => state.questions.questions[0]);
+    console.log('question list --> ', questions)
     function questionDate() { 
         let date;
         questions.map((question) => {
@@ -27,7 +28,7 @@ function ListQuestionsPage({ data }) {
         <div className='questions-container'>
             {<ul>
                 {questions && questions.map((question) => 
-                <li className='question'>
+                    <li className='question' key={question.id}>
                         <Link to={`/questions/${question.id}`} className='question-link'>{question.question}</Link>
                 {question.User && <p className='question-username'>Posted by: {question.User.username}</p>}
                 <p className='question-created'>Created On: {questionDate()}</p>

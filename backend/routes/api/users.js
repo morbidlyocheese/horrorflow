@@ -56,9 +56,9 @@ router.get(
             }
         });
         
-        const user = await User.findByPk(userId);
+        const profile = await User.findByPk(userId);
 
-        return res.json({ questions, user });
+        return res.json({ questions, profile: profile });
     })
 )
 

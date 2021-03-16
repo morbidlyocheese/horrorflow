@@ -12,26 +12,26 @@ function UserPage() {
     userId = userId.id;
     userId = parseInt(userId);
 
-    const questions = useSelector((state) => state.questions[0]);
-    const user = useSelector((state) => state.user);
+    const questions = useSelector((state) => state.questions.questions);
+    const user = useSelector((state) => state.questions.profile);
+    console.log('questions -->', questions)
+    console.log('user -->', user)
 
     useEffect(() => {
         dispatch(questionActions.displayUserQuestions(userId))
         // dispatch(questionActions.getUserInfo(userId))
     }, [dispatch, userId]);
 
-    // console.log(questions)
-    // console.log(user)
 
     return (
         <div className='profile-container'>
             <div className='user-page-container'>
                 <div className='user-questions-container'>
                     <h1 className='user-page-question-title'>
-                        Questions Asked:
+                        {user.username}'s Questions:
                     </h1>
                     {questions && questions.map((question) => (
-                    <p className='profile-question'>{question.question}</p>
+                    <a href={`/questions/${question.id}`} className='profile-question' key={question.id}>{question.question}</a>
                     ))}
                 </div>
             </div>

@@ -58,15 +58,13 @@ function QuestionPage({ data }) {
     if (sessionUser.id === question.userId) {
         return (
             <>
-                <div className='question-container'>
-                    <ul>
-                        <li className='question'>
-                            <i className='question-username'>{question.User.username}: </i>
-                            <li className='question-text'>{question.question}</li>
-                            <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
-                        </li>
-                    </ul>
-                </div>
+            <div className='question-container'>
+                <p className='question'>
+                    <i className='question-username'>{question.User.username}: </i>
+                    <p className='question-text'>{question.question}</p>
+                    <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
+                </p>
+            </div>
                 <div className='responses-container'>
                     <ul className='responses'>
                         <div className='responses-header'>Responses:</div>
@@ -101,13 +99,11 @@ function QuestionPage({ data }) {
         return (
             <>
                 <div className='question-container'>
-                    <ul>
-                        <li className='question'>
-                            <i>{question.User.username}: </i>
-                            <li>{question.question}</li>
-                            <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
-                        </li>
-                    </ul>
+                    <div className='question'>
+                        <a href={`/users/${question.User.id}/profile`}>{question.User.username}: </a>
+                        <p>{question.question}</p>
+                        <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
+                    </div>
                 </div>
                 <div className='responses-container'>
                     <ul className='responses'>
