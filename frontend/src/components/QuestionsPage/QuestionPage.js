@@ -59,21 +59,21 @@ function QuestionPage({ data }) {
         return (
             <>
             <div className='question-container'>
-                <p className='question'>
+                <div className='question'>
                     <i className='question-username'>{question.User.username}: </i>
-                    <p className='question-text'>{question.question}</p>
+                    <p className='question-text' key={question.id}>{question.question}</p>
                     <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
-                </p>
+                </div>
             </div>
                 <div className='responses-container'>
                     <ul className='responses'>
                         <div className='responses-header'>Responses:</div>
                         {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response =>
                             <div>
-                                <li className='response'>
-                                    <i>{response.User.username}:</i>
-                                </li>
-                                <li className='response-text'>{response.response}</li>
+                                <p className='response'>
+                                    <a href={`/users/${response.User.id}/profile`} className='question-response-user'>{response.User.username}:</a>
+                                </p>
+                                <p className='response-text' key={response.id}>{response.response}</p>
                                 <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId && sessionUser.username !== 'admin'}>Delete</button>
                                 <div className='rating-container'>
                                     <div className='response-rating'>
@@ -100,7 +100,7 @@ function QuestionPage({ data }) {
             <>
                 <div className='question-container'>
                     <div className='question'>
-                        <a href={`/users/${question.User.id}/profile`}>{question.User.username}: </a>
+                        <a href={`/users/${question.User.id}/profile`} className='question-user'>{question.User.username}: </a>
                         <p>{question.question}</p>
                         <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
                     </div>
@@ -110,10 +110,10 @@ function QuestionPage({ data }) {
                         <div className='responses-header'>Responses:</div>
                         {question.Responses && question.Responses.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating)).map(response =>
                             <div>
-                                <li className='response'>
-                                    <i>{response.User.username}:</i>
-                                </li>
-                                <li className='response-text'>{response.response}</li>
+                                <p className='response'>
+                                    <a href={`/users/${response.User.id}/profile`} className='question-response-user'>{response.User.username}:</a>
+                                </p>
+                                <p className='response-text' key={response.id}>{response.response}</p>
                                 <button id={response.id} className='delete-button' onClick={handleResponseDelete} disabled={sessionUser.id !== response.userId && sessionUser.username !== 'admin'}>Delete</button>
                                 <div className='rating-container'>
                                     <div className='response-rating'>

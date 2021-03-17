@@ -7,9 +7,12 @@ import * as questionActions from '../../store/question';
 
 function ListQuestionsPage({ data }) {
     const dispatch = useDispatch();
+    
+        useEffect(() => {
+            dispatch(questionActions.questionList())
+        }, [dispatch]);
 
-    const questions = useSelector((state) => state.questions.questions[0]);
-    console.log('question list --> ', questions)
+    const questions = useSelector((state) => state.questions.questions);
     function questionDate() { 
         let date;
         questions.map((question) => {
@@ -19,21 +22,17 @@ function ListQuestionsPage({ data }) {
         });
         return date[0];
     };
-
-    useEffect(() => {
-        dispatch(questionActions.questionList())
-    }, [dispatch]);
     
     return (
         <div className='questions-container'>
             {<ul>
                 {questions && questions.map((question) => 
-                    <li className='question' key={question.id}>
+                    <div className='question' key={question.id}>
                         <Link to={`/questions/${question.id}`} className='question-link'>{question.question}</Link>
                         <p className='posted-by'>Posted by: </p>{question.User &&  <a href={`/users/${question.User.id}/profile`} className='question-username'> {question.User.username}</a>}
                 <p className='question-created'>Posted On: {questionDate()}</p>
-                </li>)}
-                <li>{data}</li>
+                </div>)}
+                <p>{data}</p>
             </ul>}
         </div>
     )

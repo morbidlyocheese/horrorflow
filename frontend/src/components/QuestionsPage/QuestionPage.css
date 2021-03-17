@@ -19,6 +19,14 @@
     padding-top: 30px;
 }
 
+.question-user {
+    color: #A9A9A9;
+}
+
+.question-user:hover {
+    color: #697090;
+}
+
 .question-text {
     overflow-x: auto;
     overflow-y: auto;

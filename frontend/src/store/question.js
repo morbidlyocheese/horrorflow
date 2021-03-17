@@ -9,8 +9,10 @@ const DISPLAY_QUESTION = 'question/displayQuestion';
 const CREATE_RESPONSE = 'response/createResponse';
 const REMOVE_RESPONSE = 'response/removeResponse';
 
+// profile page
 const USER_QUESTIONS = 'user/questions';
 const GET_USER = 'user/getUser';
+const USER_RESPONSES = 'user/responses';
 
 function createQuestion(question) {
     return {
@@ -33,10 +35,17 @@ function displayQuestions(questions) {
     }
 }
 
-function userQuestions(questions) {
+function userQuestions(userQuestions) {
     return {
         type: USER_QUESTIONS,
-        payload: questions
+        payload: userQuestions
+    }
+}
+
+function userResponses(userResponses) {
+    return {
+        type: USER_RESPONSES,
+        payload: userResponses
     }
 }
 
@@ -129,18 +138,12 @@ export const questionList = () => async (dispatch) => {
 
 export const displayUserQuestions = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/profile`);
-    console.log('res questions ->', res.data.questions)
-    console.log('res questions ->', res.data)
-    dispatch(userQuestions(res.data.questions));
+    dispatch(userQuestions(res.data.userQuestions));
+    dispatch(userResponses(res.data.userResponses));
     dispatch(getUser(res.data.profile));
+    console.log('res ->', res.data.userResponses)
     return res;
 }
-
-// export const getUserInfo = (id) => async (dispatch) => {
-//     const res = await fetch(`/api/users/${id}/profile`);
-//     console.log('res user->', res.data)
-//     return res;
-// }
 
 export const question = (id) => async (dispatch) => {
     const res = await fetch(`/api/questions/${id}`);
@@ -157,19 +160,21 @@ export const changeVote = (responseId, rating, questionId) => async (dispatch) =
     dispatch(displayQuestion(res.data.question));
 }
 
-const questionReducer = (state = { question: [], questions: [], profile: {}, responses: []}, action) => {
+const questionReducer = (state = { question: [], userQuestions: [], questions: [], userResponses: [], profile: {}, responses: []}, action) => {
     let newState;
     switch(action.type) {
         case CREATE_QUESTION:
             return { ...state, question: action.payload };
         case DISPLAY_QUESTIONS:
-            return { ...state, questions: [action.payload] };
+            return { ...state, questions: action.payload };
         case DISPLAY_QUESTION:
             return [action.payload];
         case USER_QUESTIONS:
-            return { ...state, questions: action.payload };
+            return { ...state, userQuestions: action.payload };
         case GET_USER:
             return { ...state, profile: action.payload };
+        case USER_RESPONSES:
+            return { ...state, userResponses: action.payload };
         case REMOVE_QUESTION:
             newState = state.filter(question => question === action.payload);
             return newState;
