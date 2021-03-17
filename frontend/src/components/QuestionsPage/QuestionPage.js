@@ -60,7 +60,7 @@ function QuestionPage({ data }) {
             <>
             <div className='question-container'>
                 <div className='question'>
-                    <i className='question-username'>{question.User.username}: </i>
+                    <a href={`/users/${question.User.id}/profile`} className='question-username'>{question.User.username}: </a>
                     <p className='question-text' key={question.id}>{question.question}</p>
                     <button className='delete-button' onClick={handleQuestionDelete}>Delete</button>
                 </div>
