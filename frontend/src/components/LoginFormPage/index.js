@@ -24,6 +24,16 @@ function LoginFormPage() {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             });
     }
+
+    const demo = (e) => {
+        e.preventDefault();
+        setErrors([]);
+        return dispatch(sessionActions.demoLogin())
+            .catch((res) => {
+                if (res.data && res.data.errors) setErrors(res.data.errors);
+            });
+    };
+
     return (
         <div className='container'>
             <form onSubmit={handleSubmit}>
@@ -37,6 +47,9 @@ function LoginFormPage() {
                     <input className='login login-password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 </label>
                 <button className='login login-button' type='submit'>Login</button>
+                <div className='demo-container'>
+                    <button className='demo-login' onClick={demo}>Demo-login</button>
+                </div>
             </form>
         </div>
     );

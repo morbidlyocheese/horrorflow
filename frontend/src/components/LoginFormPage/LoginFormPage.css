@@ -26,7 +26,8 @@ form {
     border-radius: 5px;
 }
 
-.login-button {
+.login-button,
+.demo-login {
     justify-self: center;
     margin-left: auto;
     text-align: center;
@@ -37,11 +38,18 @@ form {
     padding: 2px;
     color: #A9A9A9;
     background-color: #697090;
-    border-radius: 5%;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 5px;
 }
 
-.login-button:hover {
+.login-button:hover,
+.demo-login:hover {
     background-color: #34394B;
     border: 2px solid #212738;
     border-radius: 5%;
+}
+
+.demo-container {
+    display: flex;
+    justify-content: center;
 }
